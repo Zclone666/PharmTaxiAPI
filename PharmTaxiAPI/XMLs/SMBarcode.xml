@@ -1,0 +1,1488 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SMBarcode</name>
+    </assembly>
+    <members>
+        <member name="P:SMBarcode.Barcode.identification_number">
+            <summary>
+            Уникальный идентификатор товара
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Barcode.expiry_date">
+            <summary>
+            Срок годности (ГГММДД)
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Barcode.serial_number">
+            <summary>
+            Номер серии (партии)
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Barcode.batch_number">
+            <summary>
+            Уникальный код упаковки
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Barcode.expired">
+            <summary>
+            Валидация срока годности
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Barcode.code">
+            <summary>
+            то же, что и RawCode, только обработанный - без пробелов, кавычек и проч.
+            </summary>
+        </member>
+        <member name="P:SMBarcode.BarcodeString.Id">
+            <summary>
+            Идентификатор в списке
+            </summary>
+        </member>
+        <member name="P:SMBarcode.BarcodeString.Barcode">
+            <summary>
+            Строка баркода
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Configuration.FPPrice_Connect">
+            <summary>
+            MySql строка подключения к таблице цен фармпрепаратов
+            </summary>
+        </member>
+        <member name="M:SMBarcode.Configuration.Setup(System.String,System.String,System.String,System.String,SMBarcode.Configuration.SetupBase,UMKBUtils.BigIdCryptography,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Конфигурация 
+            </summary>
+            <param name="UMKB_MYSQL_CONNECTION_STRING">Строка подключения для конструктора MySqlConnection</param>
+            <param name="TABLEGET_KEY">Лицензионный ключ для доступа к редактированию данных в UMKB</param>
+            <param name="CONCEPT_KEY">Лиц ключ для получения концептов из UMKB</param>
+            <param name="GRAPH_KEY">Лиц ключ для получения графов из UMKB</param>
+        </member>
+        <member name="F:SMBarcode.FPCache.DosageIds">
+            <summary>
+            здесь и далее - первый uint - это id fp, второй - id соответственно дозировки и т.п.
+            </summary>
+        </member>
+        <member name="F:SMBarcode.FPCache.DosageValues">
+            <summary>
+            первый uint - это id fp, второй - value дозировки
+            </summary>
+        </member>
+        <member name="M:SMBarcode.DrugRequests.Read(SMBarcode.Barcode)">
+            <summary>
+            Основной метод получения данных по штрих-коду, принимает распаршенный баркод, возвржает инфу по ФП
+            Содержит логику последовательности опроса разных методов сбора информации по ФП
+            </summary>
+            <param name="barcode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.DrugRequests.CheckControlSum(System.String)">
+            <summary>
+            Проверка контрольной суммы GTIN
+            </summary>
+            <param name="gtin">GTIN на проверку</param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.DrugRequests.GetUMKBInfo(SMBarcode.Drug@)">
+            <summary>
+            Обращение к API ФАРМТАКСИ для Data Matrix и EAN_13
+            </summary>
+        </member>
+        <member name="M:SMBarcode.DrugRequests.GetUMKBInfoBySerial(SMBarcode.Drug@)">
+            <summary>
+            Обращение к API ФАРМТАКСИ для серийного номера
+            </summary>
+        </member>
+        <member name="M:SMBarcode.DrugRequests.SearchGTINInLib67(System.String)">
+            <summary>
+            Проверка наличия GTIN в таблице lib_67_varchar
+            </summary>
+            <param name="gtin">GTIN на проверку</param>
+        </member>
+        <member name="M:SMBarcode.DrugRequests.FPCertAvailable(System.String,System.String@)">
+            <summary>
+            Проверка актуальности удостоверения
+            </summary>
+            <param name="cert">Удостоверение на проверку</param>
+        </member>
+        <member name="M:SMBarcode.DrugRequests.SearchSerialInLib67(System.String)">
+            <summary>
+            Проверка наличия серийного номера в таблице lib_67_dyn_batchs
+            </summary>
+            <param name="serial">Серийный номер на проверку</param>
+        </member>
+        <member name="M:SMBarcode.DrugRequests.GetCountryFromLib73(System.Int32)">
+            <summary>
+            Проверка регистрации в РФ в lib_73
+            </summary>
+            <param name="masterId">Master ID препарата</param>
+        </member>
+        <member name="M:SMBarcode.DrugRequests.GetExpiryFromLib67(System.Int32)">
+            <summary>
+            Проверка наличия GTIN в таблице lib_67_varchar
+            </summary>
+        </member>
+        <member name="M:SMBarcode.DrugRequests.GetUPC(SMBarcode.Drug@)">
+            <summary>
+            метод для получения инфы по американским штришкодам
+            </summary>
+        </member>
+        <member name="M:SMBarcode.UMKBGetInfo.GetMasterIDByGTIN(System.String)">
+            <summary>
+            Поиск master_id в lib_67_varchar по GTIN
+            </summary>
+            <param name="gtin">GTIN на проверку</param>
+        </member>
+        <member name="M:SMBarcode.UMKBGetInfo.GetMasterIDByGTIN73(System.String)">
+            <summary>
+            Поиск master_id в lib_73 по GTIN
+            </summary>
+            <param name="gtin">GTIN на проверку</param>
+        </member>
+        <member name="M:SMBarcode.Drug.GetDosageValueByFps(System.String,System.Collections.Generic.List{System.UInt32})">
+            <summary>
+            Получение числового значения дозировки для ФП
+            </summary>
+            <param name="connectionString"></param>
+            <param name="FPs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Drug.GetThemAll(System.String,System.Boolean)">
+            <summary>
+            Получение ID всех ФП
+            </summary>
+        </member>
+        <member name="M:SMBarcode.Drug.GetThemNotAll(System.String)">
+            <summary>
+            Получение ID всех связей ФП с дозами
+            </summary>
+        </member>
+        <member name="M:SMBarcode.Drug.GetThemNotAll3(System.String)">
+            <summary>
+            Получить данные из таблицы lib_67_value для препаратов БЕЗ(!) ДВк
+            Работает только с продовским скулём
+            </summary>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Drug.GetAllValuesForDVk(System.String)">
+            <summary>
+            Получить данные из таблицы lib_67_value для препаратов С(!) ДВк 
+            Работает только с продовским скулём
+            </summary>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Drug.GetTheirsSublings(System.String,System.Collections.Generic.List{System.UInt32},System.Boolean)">
+            <summary>
+            Поиск предков или потомков ФП с переданными id
+            </summary>
+            <param name="connectionString"></param>
+            <param name="id"></param>
+            <param name="parent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Drug.GetTheirsSublings(System.String,System.UInt32,System.Boolean)">
+            <summary>
+            Поиск предка или потомка ФП с переданным id
+            </summary>
+            <param name="connectionString"></param>
+            <param name="id"></param>
+            <param name="parent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Drug.GetFuckingDVs(System.String)">
+            <summary>
+            Получение id ФП и его ДВ/ДВк
+            </summary>
+            <param name="connectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Drug.GetDeyVesch(SMBarcode.Drug@)">
+             <summary>
+             Получение действующего вещества
+             </summary>
+             <returns></returns>
+            
+        </member>
+        <member name="M:SMBarcode.Drug.GetMasterIdLib62(System.Nullable{System.UInt32},System.String)">
+            <summary>
+            Получения ID ТН по Id ДВ
+            </summary>
+            <param name="DvId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Drug.GetMasterIdLib67(SMBarcode.Drug@)">
+            <summary>
+            получение master_id для ФП (lib_67), получение Фарм Препарата и Торгового наименования из ЮМКБ
+            </summary>
+        </member>
+        <member name="M:SMBarcode.Drug.FastGetMasterIdLib67(SMBarcode.ModFP)">
+            <summary>
+            получение master_id для ФП (lib_67), получение Фарм Препарата и Торгового наименования из ЮМКБ
+            </summary>
+        </member>
+        <member name="M:SMBarcode.Drug.GetMasterIdLib67(SMBarcode.ModFP)">
+            <summary>
+            получение master_id для ФП (lib_67), получение Фарм Препарата и Торгового наименования из ЮМКБ
+            </summary>
+        </member>
+        <member name="M:SMBarcode.Drug.GetFPByMasterID(System.String)">
+             <summary>
+            Служит для поиска имени ФП в БД по master_id (для внутреннего пользования)
+             </summary>
+             <param name="master_id">master_id ФП, полученное после get semantic'а</param>
+             <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Drug.GetMasterIDByGTIN(System.String)">
+            <summary>
+            Получение masterID по GTIN из БД MySQL
+            </summary>
+            <param name="gtin"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SMBarcode.Drug.batchLot">
+            <summary>
+            Номер партии
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.comment">
+            <summary>
+            Комментарий (например продан)
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.deyVesch">
+            <summary>
+            Действующее вещество
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.dvIdBig">
+            <summary>
+            BigID ДВ
+            </summary>
+        </member>
+        <member name="F:SMBarcode.Drug._dv_id_short">
+            <summary>
+            Short ID ДВ, автоматически подсчитает big ID
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.dosage">
+            <summary>
+            Дозировка
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.expiration">
+            <summary>
+            Срок годности: expired (истек), unexpired (не истек), soon (близок к истечениию)
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.farmPrep">
+            <summary>
+            Фарм препарат
+            </summary>
+        </member>
+        <member name="F:SMBarcode.Drug._fpIdBig">
+            <summary>
+            BigID lib67
+            </summary>
+        </member>
+        <member name="F:SMBarcode.Drug._fpIdShort">
+            <summary>
+            Short ID по lib67, автоматически подсчитает big ID
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.farmForm">
+            <summary>
+            Лекарственная форма
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.farmFormId">
+            <summary>
+            ID лекарственной формы
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.farmMethod">
+            <summary>
+            Метод приема
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.farmMethodId">
+            <summary>
+            ID Метода приема
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.gtin">
+            <summary>
+            GTIN препарата
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.infoRetrieveLevel">
+            <summary>
+            Количество информации собранной с сервисов
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.isMed">
+            <summary>
+            Лекарственное средство?
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.manuf">
+            <summary>
+            Производитель
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.qty">
+            <summary>
+            Количество в упаковке
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.regCert">
+            <summary>
+            Регистрационный сертификат
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.regCertDate">
+            <summary>
+            Дата государственной регистрации
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.regCertStatus">
+            <summary>
+            Статус сертификата: valid, expired, withdrawn
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.ruReg">
+            <summary>
+            Регистрация в РФ
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.saleDate">
+            <summary>
+            Дата продажи препарата
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.scansCount">
+            <summary>
+            Количество сканирований
+            </summary>
+        </member>
+        <member name="F:SMBarcode.Drug._torg_name">
+            <summary>
+            Торговое наименование
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.tnIdBig">
+            <summary>
+            BigID ТН
+            </summary>
+        </member>
+        <member name="F:SMBarcode.Drug._tn_id_short">
+            <summary>
+            Short ID ТН, автоматически подсчитает big ID
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.tnved">
+            <summary>
+            ТНВЭД
+            </summary>
+        </member>
+        <member name="P:SMBarcode.Drug.useByOrExpiry">
+            <summary>
+            Срок годности
+            </summary>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.SemReqTNFP(System.UInt32,System.UInt16)">
+            <summary>
+            Get Semantic для поиска ФармПрепарата по lib (ONLY 67!!!) и короткому ID Торгового Наименования 
+            </summary>
+            <param name="id"></param>
+            <param name="_lib"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.SemReqTNFP(System.String)">
+            <summary>
+            Get Semantic для поиска ФармПрепарата по libid (он же bigint иногда - вида 670XXXXXX, т.е. lib*10000000+id короткий) Торгового Наименования 
+            </summary>
+            <param name="_libid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.SemReqDVTN(System.String)">
+            <summary>
+            Get Semantic для поиска Торгового наименования по libid (он же bigint иногда - вида 670XXXXXX, т.е. lib*10000000+id короткий) Действующего вещества
+            </summary>
+            <param name="_libid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.SemReqTNDV(System.String)">
+            <summary>
+            Get Semantic для поиска Действующего вещества по libid (он же bigint иногда - вида 620XXXXXX, т.е. lib*10000000+id короткий) Торгового наименования
+            </summary>
+            <param name="_libid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.DVSearch(System.String)">
+            <summary>
+            Get Concept для поиска действующего вещества (в lib 52)
+            </summary>
+            <param name="dv_name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.ConceptSearch(System.String,System.String)">
+            <summary>
+            Get Concept общий (lib (62,52,75(?)) необходимо передавать в качестве параметра)
+            </summary>
+            <param name="dv_name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.TNSearch(System.String)">
+            <summary>
+            Get Concept для поиска торгового наменования (в lib 62)
+            </summary>
+            <param name="tn_name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.SemReq(System.UInt16,System.UInt16,System.String)">
+            <summary>
+            Общий Get Semantic - необходимо передавать lib поиска (52, 62 и т.д.), level (1600, 1608 и т.д.) и libid (он же bigint иногда - вида 670XXXXXX, т.е. lib*10000000+id короткий)
+            </summary>
+            <param name="_lib"></param>
+            <param name="_level"></param>
+            <param name="_libid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.SemReq(System.UInt16,System.UInt16,System.String,System.Int16)">
+            <summary>
+            Общий Get Semantic - необходимо передавать lib поиска (52, 62 и т.д.), level (1600, 1608 и т.д.) и libid (он же bigint иногда - вида 670XXXXXX, т.е. lib*10000000+id короткий) и route (0,1,2)
+            </summary>
+            <param name="_lib"></param>
+            <param name="_level"></param>
+            <param name="_libid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.SemReq(System.Collections.Generic.List{System.UInt16},System.Collections.Generic.List{System.UInt16},System.Collections.Generic.List{System.String},System.Int16)">
+            <summary>
+            Общий Get Semantic - необходимо передавать lib поиска (52, 62 и т.д.), level (1600, 1608 и т.д.) и libid (он же bigint иногда - вида 670XXXXXX, т.е. lib*10000000+id короткий) и route (0,1,2)
+            </summary>
+            <param name="lib"></param>
+            <param name="level"></param>
+            <param name="libid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Methods.SemanticS.TableData2(System.String)">
+            <summary>
+            Получение табличных данных (принимает Bigid в старом формате)
+            </summary>
+            <param name="bigid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Models.BaseReflection.GetEnumerator">
+            <summary>
+            для того, чтобы усё остальное работало
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Models.BaseReflection.ListProperties">
+            <summary>
+            Получить список свойств (их имён)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Models.BaseReflection.ValueOfProperty(System.String)">
+            <summary>
+            Получить значение свойства
+            </summary>
+            <param name="PropName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Models.BaseReflection.SetValueOfProperty(System.String,System.String)">
+            <summary>
+            Записать значение в свойство с определённым именем
+            </summary>
+            <param name="PropName"></param>
+            <param name="Val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Models.BaseReflection.GetPropType(System.String)">
+            <summary>
+            Получить тип свойства с оппределённым именем
+            </summary>
+            <param name="PropName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Models.BaseReflection.GetKeys">
+            <summary>
+            Тут можно получить не просто List имён свойств, но и их порядковый номер; используется для внутренней кухни
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Models.BaseReflection.CountProps">
+            <summary>
+            Здесь мы можем получить просто количество свойств числом
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Models.BaseReflection.GetValueOfPropertyByIndex(System.Int32)">
+            <summary>
+            Здесь мы можем получить значение свойства по его индексу
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Models.BaseReflection.GetValueOfPropertyByIndex2(System.Int32)">
+            <summary>
+            Здесь мы можем получить значение свойства любого типа по его индексу
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SMBarcode.Models.BaseReflection.SetValueOfPropertyByIndex(System.Int32,System.String)">
+            <summary>
+            Здесь мы можем записать значение в свойство с указанным индексом
+            </summary>
+            <param name="index"></param>
+            <param name="Val"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SMBarcode.Models.UPCRes">
+            <summary>
+            Класс ответа для получения инфы по америкосовским штрихкодам. Вероятно, надо бы дополнить в соответствии с данной документацией https://www.upcitemdb.com/wp/docs/main/development/responses/
+            </summary>
+        </member>
+        <member name="T:ServiceReference2.DBException">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.DBException.err_code">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.DBException.err_codeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.DBException.message">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.DBException.rslt">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.operationResultCode">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.LOGIN_ACCESS_GRANTED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.LOGIN_ACCESS_DENIED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.LOGIN_MEMBERSHIP_STOPPED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.LOGIN_DEBTOR">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.EDI_PROVIDER_NOT_FOUND">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.EDI_STANDARD_NOT_FOUND">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.EDI_MSG_NOT_FOUND">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.EDI_MSG_VERS_NOT_FOUND">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.NO_ERROR">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.MISSING_OR_INVALID_PARAMETERS">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.NO_RECORD_FOUND">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.NO_EXACT_MATCH_ON_GLN">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.TOO_MANY_HITS">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.UNKNOWN_COUNTRY_CODE">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.RESPONSE_MAYBE_INCOMPLETE">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.REQUEST_TIMEOUT">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.NO_TRADEITEM_CATALOGUE">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.COMPANY_INFORMATION_WITHHELD">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.COMPANY_NOT_MEMBER_OF_GS1">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.COUNTRY_NOT_ON_THE_GEPIR_NETWORK">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.ITEM_INFORMATION_WITHHELD">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.ILLEGAL_NUMBER">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.REQ_QNT_EXCEEDED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.GLN_NOT_ASSIGNED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.PREFIX_FOR_INTERNAL_USE_ONLY">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.ISSN">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.ISBN">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.COUPON_PREFIX">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.PREFIX_NEVER_ALLOCATED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.GEPIR_UNSUPPORTED_REQUEST">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.GEPIR_AUTH_FAILED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.SERVER_ERROR">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.ACCESS_DENIED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.SAVE_ERROR">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.operationResultCode.UNKNOWN">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.operationResult">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.CheckResult">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.DataObjectRecords">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.pubRslt">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.SubResults">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.dataObjectId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.errCode">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.errMsg">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.errName">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.gln">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.idRecord">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.idRecordSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.key">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.operationResult.variant">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.checkResultLine">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkResultLine.attrId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkResultLine.attrName">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkResultLine.groupName">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkResultLine.infoTypeId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkResultLine.isExtAttr">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkResultLine.msg">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkResultLine.objectId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkResultLine.type">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkResultLine.typeSpecified">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.lineType">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.lineType.ERROR">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.lineType.WARN">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.lineType.INFO">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.entOption">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.entOption.option">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.entOption.value">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.gtin">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.gtin.src">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.gtin.Value">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.gtinList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.gtinList.GTINList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.gtinList.totalQnt">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.fileData">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.fileData.data">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.fileData.Result">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.fileData.file_name">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.fileData.mime">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.extAttributeMeta">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.attributeGroupIntId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.attributeGroupIntIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.calcType">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.calcTypeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isCollection">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isCollectionSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.description">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.dictId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.editable">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isHidden">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.id">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.intId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.multilanguage">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.multilanguageSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.maxLength">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.maxLengthSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.maxValue">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.maxValueSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.minValue">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.minValueSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isOptional">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isOptionalSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.parentAttribute">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.parentAttributeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isReadOnly">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isReadOnlySpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isRequired">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isRequiredSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.order">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.orderSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.text">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.type">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.typeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isUnique">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttributeMeta.isUniqueSpecified">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.attributeType">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.UNKNOWN">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.INTEGER">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.BOOLEAN">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.FLOAT">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.STRING">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.DATE">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.CALCULATED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.DICTIONARY">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.SUBDICTIONARY">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.INPUT_HELP">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.DATE_TIME">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.SELF_REF">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.BINARY">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.LONG_TEXT">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.attributeType.TABLE_REF">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.infoTypeMeta">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeMeta.ExtAttrMetaList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeMeta.add">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeMeta.del">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeMeta.edit">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeMeta.id">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeMeta.req">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeMeta.seq">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeMeta.text">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeMeta.show">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.baseAttributeMeta">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.calcType">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.calcTypeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.description">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.dictId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.editable">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.fullName">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.attributeGroupIntId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.attributeGroupIntIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.id">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.longName">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.maxLength">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.maxLengthSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.multilanguage">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.multilanguageSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.isOptional">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.order">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.orderSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.parentAttrId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.parentDataObjectId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.isReadOnly">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.isRequired">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.text">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.type">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttributeMeta.typeSpecified">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.dataObjectMeta">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectMeta.BaseAttrMetaList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectMeta.SubObjectMetaList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectMeta.InfoTypeMetaList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectMeta.clsAttr">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectMeta.clsId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectMeta.descr">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectMeta.name">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectMeta.objectId">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.dictionaryValueMeta">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dictionaryValueMeta.SubDict">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dictionaryValueMeta.id">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dictionaryValueMeta.intId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dictionaryValueMeta.text">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.dictionaryMeta">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dictionaryMeta.lang">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dictionaryMeta.Values">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dictionaryMeta.descr">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dictionaryMeta.id">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dictionaryMeta.intId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dictionaryMeta.text">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.extAttrValue">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttrValue.MultValue">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttrValue.attrDescr">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttrValue.attrText">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttrValue.attrType">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttrValue.attrTypeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttrValue.extAttrId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttrValue.descr">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttrValue.dictId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttrValue.groupId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAttrValue.value">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.infoTypeRecord">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeRecord.AttributeGroups">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeRecord.AttributeValues">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeRecord.idRecord">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeRecord.idRecordSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeRecord.infoTypeId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.infoTypeRecord.intoTypeText">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.attributeGroupMeta">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.attributeGroupMeta.isCollection">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.attributeGroupMeta.isCollectionSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.attributeGroupMeta.description">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.attributeGroupMeta.id">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.attributeGroupMeta.intId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.attributeGroupMeta.intIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.attributeGroupMeta.longText">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.attributeGroupMeta.isOptional">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.attributeGroupMeta.isOptionalSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.attributeGroupMeta.shortText">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.valueLngVariant">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.valueLngVariant.lng">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.valueLngVariant.value">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.baseAttrValue">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.fileData">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.variant">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.attrDescr">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.attrText">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.attrType">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.attrTypeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.baseAttrId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.descr">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.dictId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.fileName">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.groupId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.mimeType">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.baseAttrValue.value">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.dataObjectRecord">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.AttributeGroups">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.baseKey">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.BaseAttributeValues">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.InfoTypeRecords">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.ReqValues">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.result">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.SubDataObjectRecords">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.changeVersion">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.changeVersionSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.dataObjectDescr">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.dataObjectId">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.dataObjectText">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.externalKey1">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.externalKey2">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.idRecord">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.idRecordSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.metaInfoVersionTime">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.metaInfoVersionTimeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.parentIdRecord">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.parentIdRecordSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.parentKey">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.src">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.dataObjectRecord.variant">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.getDataOperationReturn">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.getDataOperationReturn.AttrGroupList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.getDataOperationReturn.DataRecord">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.getDataOperationReturn.DictList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.getDataOperationReturn.DataObjectList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.getDataOperationReturn.Result">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.glnList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.glnList.GLNList">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.glnList.totalQnt">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.gln">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.gln.src">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.gln.Value">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.extAppAccessOption">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppAccessOption.from">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppAccessOption.fromSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppAccessOption.option">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppAccessOption.to">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppAccessOption.toSpecified">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.extAppChkOptLog">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppChkOptLog.id">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppChkOptLog.idSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppChkOptLog.reqAppName">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppChkOptLog.reqEntName">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppChkOptLog.reqGln">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppChkOptLog.reqLogin">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppChkOptLog.reqOption">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppChkOptLog.reqTime">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppChkOptLog.reqTimeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.extAppChkOptLog.reqStatus">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.checkGDTIResult">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkGDTIResult.Results">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkGDTIResult.errCode">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkGDTIResult.errCodeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkGDTIResult.errMsg">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.checkGDTIResultItem">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkGDTIResultItem.errMsg">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkGDTIResultItem.GLN">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkGDTIResultItem.requestedGDTI">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkGDTIResultItem.resultCode">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkGDTIResultItem.resultCodeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:ServiceReference2.checkGDTIResultItem.resultCodeDesc">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.checkGDTIResultCode">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.checkGDTIResultCode.UNKNOWN">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.checkGDTIResultCode.ERROR">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.checkGDTIResultCode.WAITING_FOR_PAYMENT">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.checkGDTIResultCode.PAYMENT_WAS_RETURNED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.checkGDTIResultCode.WAITING_REGISTRATION">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.checkGDTIResultCode.IS_REGISTERED">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.checkGDTIResultCode.NOT_FOUND">
+            <remarks/>
+        </member>
+        <member name="T:ServiceReference2.classification">
+            <remarks/>
+        </member>
+        <member name="F:ServiceReference2.classification.GPC">
+            <remarks/>
+        </member>
+    </members>
+</doc>

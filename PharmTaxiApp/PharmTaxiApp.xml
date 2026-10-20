@@ -1,0 +1,1092 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PharmTaxiApp</name>
+    </assembly>
+    <members>
+        <member name="M:PharmTaxiApp.Methods.Auth.Check(System.String,System.String,System.String)">
+            <summary>
+            Проверка права доступа
+            </summary>
+            <param name="key"></param>
+            <param name="authkey"></param>
+            <param name="service"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.CheckWarnings.Warnings(System.Object)">
+            <summary>
+            Warnings from ECP
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.Drugs.Dosages(PharmTaxiApp.Models.Request)">
+            <summary>
+            Вытаскивание дозировок для препарата. Прокси к Святозару
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.Drugs.FPDosages(PharmTaxiApp.Models.Request)">
+            <summary>
+            Вытаскивание дозировок для препарата. Прокси к Святозару
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.Drugs.CreateDosage(PharmTaxiApp.Models.Request)">
+            <summary>
+            Вытаскивание дозировок для препарата. Прокси к Святозару
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.Drugs.Info(PharmTaxiApp.Models.RequestDrug)">
+            <summary>
+            Get drug info
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.Drugs.MustHaveCheck(PharmTaxiApp.Models.RequestMustHave@)">
+            <summary>
+            Проверка лс в списке ЖНВЛП
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PharmTaxiApp.Methods.ECP">
+            <summary>
+            Methods for emulate ecp (proxy-methods
+            </summary>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.Logger.#ctor(System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Класс логгера, но юзать надоть Logs
+            </summary>
+            <param name="owner"></param>
+            <param name="append"></param>
+            <param name="dontKeepFileOpen"></param>
+        </member>
+        <member name="T:PharmTaxiApp.Methods.Logs">
+            <summary>
+            Для логирования создаём экземпляр этого класса
+            </summary>
+        </member>
+        <member name="T:PharmTaxiApp.Methods.SaveOrder">
+            <summary>
+            Класс для сохранения заказа
+            </summary>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.SaveOrder.Save(SMReceipt.Global.Models.SavePrescript@)">
+            <summary>
+            Сохранение Листа Назначения
+            </summary>
+            <param name="order"></param>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.SaveOrder.OrderSave(SMReceipt.Global.Models.SaveOrder@)">
+            <summary>
+            Сохранение Заказа
+            </summary>
+            <param name="order"></param>
+        </member>
+        <member name="T:PharmTaxiApp.Methods.Scanner">
+            <summary>
+            Класс с методами для работы со штрихкдами
+            </summary>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.Scanner.Check(PharmTaxiApp.Models.CheckReq)">
+            <summary>
+            Проверка подлинности и получение данных по штрихкоду
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.Scanner.Detect">
+            <summary>
+            Какая-то фишгня, типо теста, осталась от старого проекта
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:PharmTaxiApp.Methods.Search.sr">
+            <summary>
+            чтобы можно было юзать унаследованные от абстрактно класса методы внутри статических фунций
+            </summary>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.Search.Drugs(UMKBRequests.Models.API.Semantic.RequestSearch)">
+            <summary>
+            Побуквенный поиск ЛС (т.н. Сфинкс), работает с ключами от ЭКФ (и номером сервиса тож)
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PharmTaxiApp.Methods.UPCGoMF">
+            <summary>
+            Класс для работы с америкосовскими штрих кодами
+            </summary>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.UPCGoMF.Get(System.String)">
+            <summary>
+            метод для получения инфы по американским штришкодам
+            </summary>
+            <param name="upc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiApp.Methods.Utils.ClearingNames(System.String)">
+            <summary>
+            очистка строки от всякой мишуры
+            </summary>
+            <param name="e"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Answer.alert">
+            <summary>
+            Стандартный алерт для передачи состояния
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.BarcodeRequestData.text">
+            <summary>
+            штрих код
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.BarcodeRequestData.format">
+            <summary>
+            формат штрих кода
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.AI.Type">
+            <summary>
+            Тип секции
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.AI.Starter">
+            <summary>
+            Синхросимволы
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.AI.Description">
+            <summary>
+            Описание секции
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.AI.Length">
+            <summary>
+            Длина секции. Если не указана - считается до ближайшего разделителя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.BarcodeInfo.PlainText">
+            <summary>
+            Текст, содержащийся в штрих-коде
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.BarcodeInfo.Formats">
+            <summary>
+            Форматы, которым соответствует штрих-код
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.BarcodeInfo.RawBytes">
+            <summary>
+            Байтовое наполнение штрих-кода
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.BarcodeInfo.WasReaded">
+            <summary>
+            Определяет, было ли разобрано по полям содержимое штрих-кода
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.BarcodeInfo.ReadedFormat">
+            <summary>
+            Возвращает опознанный формат штрих-кода
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.BarcodeInfo.Values">
+            <summary>
+            Словарь полей и их значений, обнаруженных в штрих-коде
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.BarcodeInfo.GTIN">
+            <summary>
+            Значение GTIN
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.BarcodeInfo.UseBy">
+            <summary>
+            Срок годности
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.BarcodeInfo.Seria">
+            <summary>
+            Номер партии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Barcodes.BarcodeInfo.Number">
+            <summary>
+            Уникальный номер упаковки
+            </summary>
+        </member>
+        <member name="M:PharmTaxiApp.Models.Barcodes.BarcodeInfo.CheckGTINControlSum">
+            <summary>
+            Проверка контрольной суммы GTIN
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiApp.Models.Barcodes.BarcodeInfo.CheckUseBy">
+            <summary>
+            Проверка срока годности
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:PharmTaxiApp.Models.CheckReq.text">
+            <summary>
+            штрих код
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.CheckReq.format">
+            <summary>
+            формат штрих кода
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.CheckReq.coords">
+            <summary>
+            массив double с координатами
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.CheckReq.accuracy">
+            <summary>
+            точность
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.CheckReq.auth_key">
+            <summary>
+            аутизм кей
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.CheckReq.lang">
+            <summary>
+            по умолчанию "ru"
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.CheckReq.mode">
+            <summary>
+            режим (строгий) WORK
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.CheckReq.country">
+            <summary>
+            Страна. Слать "sru"
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Concept.key">
+            <summary>
+            Уникальный индентификатор (нужен для GUI)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Concept.id">
+            <summary>
+            BigId (в случае работы с фронтом - зашифрованный)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Concept.type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Concept.level">
+            <summary>
+            Левел 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Concept.name">
+            <summary>
+            Наименование ЛС
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Concept.namesearch">
+            <summary>
+            Строка по которой был осуществлён поиск
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Concept.group">
+            <summary>
+            Номер группы (для растворов)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Concept.main">
+            <summary>
+            Флаг - true - основное заболевание, false - сопутствующее заболевание
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ECP.AnswerSchedule.alert">
+            <summary>
+            Стандартный класс алерта - информация о состоянии обработки запроса.
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.key">
+            <summary>
+            Постоянный ключ авторизации
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.authkey">
+            <summary>
+            Временный токен авторизации (https://cs.socmedica.com/api/user/authorization)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.device_id">
+            <summary>
+            Идентификатор устройства
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.service">
+            <summary>
+            Номер сервиса (4 - экф, 108 технический экф2, 2 - Экф премиум)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.misid">
+            <summary>
+            id МИСа
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.misprotocol">
+            <summary>
+            МИС-овский id протокола
+            Техническое поле, используется при интеграции с МИС-ами
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.doctor_id">
+            <summary>
+            id врача
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.doctor_code">
+            <summary>
+             МИС-совский код
+             Техническое поле, используется при интеграции с МИС-ами
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.doctor_name">
+            <summary>
+            Имя врача
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.clinic_id">
+            <summary>
+            id клиники
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.clinic_code">
+            <summary>
+            МИС-совский код клиники
+            Техническое поле, используется при интеграции с МИС-ами
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.clinic_name">
+            <summary>
+            Наименование клиники
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.dep_id">
+            <summary>
+            id отделения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.dep_code">
+            <summary>
+            МИС-совский код отделения 
+            Техническое поле, используется при интеграции с МИС-ами
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.dep_name">
+            <summary>
+            Наименование отделения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.patient">
+            <summary>
+            Главный класс слепка состояния пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.active_language">
+            <summary>
+            Локаль пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.drugs">
+            <summary>
+            Список активных ЛС
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.liquids">
+            <summary>
+            Список активных растворов
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.deletedDrugs">
+            <summary>
+            Список деактивированных ЛС
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.deletedLiquids">
+            <summary>
+            Список деактивированных растворов
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.return_subjects">
+            <summary>
+            Флаг того, что необходимо вернуть формализованные поля активных ЛС/растворов и т.д.
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.misurl">
+            <summary>
+            Ссылка на сервис на стороне МИС-ов, куда необходимо переслать результаты 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.protocol">
+            <summary>
+            Номер протокола.
+            Техническое поле, необходимо при интеграции с МИС-ами
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.save_recipe">
+            <summary>
+            Флаг от фронта, что необходимо сохранить простокол и создать из него рецепт. Устарело, уже не используется.
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.recipe">
+            <summary>
+            Номер сгенерированного рецепта сформированного из этой структуры. Устарело, уже не используется.
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.recipe_endtime">
+            <summary>
+            Время окончания действия рецепта (используется при выписке рецепта) в UnixTime(мc)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.recipe_endtimeitem">
+            <summary>
+            ID концепта продолжительности действия рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.recipe_formid">
+            <summary>
+            ID формы рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.recipe_text">
+            <summary>
+            Комментарий к рецепту (используется при выписке рецепта)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.GetInfoPreparations.recipe_data">
+            <summary>
+            Данные для выписки рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.formid">
+            <summary>
+            ID формы рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.DateStart">
+            <summary>
+            Дата создания рецепта (UnixTime в мс)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.recipe_text">
+            <summary>
+            Комментарий к рецепту (используется при выписке рецепта)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.recipe_endtime">
+            <summary>
+            Время окончания действия рецепта (используется при выписке рецепта) в UnixTime(мc)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.recipe_endtimeitem">
+            <summary>
+            ID концепта продолжительности действия рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.pdid">
+            <summary>
+            id заболевания пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.pdcode">
+            <summary>
+            Код(коды) МКБ10 заболевания пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.pchronic">
+            <summary>
+            Флаг, что заболевание хроническое
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.pcatlevel">
+            <summary>
+              Источник финансирования (варианты: федеральный бюджет, бюджет субъекта Российской Федерации, муниципальный бюджет)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.pcatcode">
+            <summary>
+             Льготная категория гражданина(пациента)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.pdiscount">
+            <summary>
+            % оплаты - следствие скидки по категории
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.idStatus">
+            <summary>
+            Id статуса рецепта (выписан, отпущен, просрочен без отпуска)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.cito">
+            <summary>
+            отметка “cito” - «срочно»
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.statim">
+            <summary>
+            отметка “statim” - «немедленно» 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.special">
+            <summary>
+            отметка отметка «По специальному назначению» (булево значение, только для бланка 107у, по умолчанию ставится true если срок действия рецепта больше 60 дней. Если срок действия рецепта меньше или равно 60 дней, то false ) 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.spectext">
+            <summary>
+            периодичность отпуска лекарственных препаратов (только если отметка «По специальному назначению» true) (поле типа input, куда врач должен написать «еженедельно» или «ежемесячно», или иное)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.docsign">
+            <summary>
+            Электронная подпись врача
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.doccertify">
+            <summary>
+            Электронный сертификат врача
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.commsign">
+            <summary>
+            Электронная подпись врач. комиссии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeData.commcertify">
+            <summary>
+            Электронный сертификат врачебной комисии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.recipe_code">
+            <summary>
+            Назначеная фармакотерапия
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.names">
+            <summary>
+            Имена к айдишникам (если их нет в кэше) в фармакотерапии в нужной локали
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.patient">
+            <summary>
+            Пациент
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.idDoc">
+            <summary>
+            Id врача выписавшего рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.idUser">
+            <summary>
+            Id юзера, выписавшего рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.idDep">
+            <summary>
+            Id отделения, где выписали рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.idClinic">
+            <summary>
+            Id клиники, где выписали рецепт
+            </summary>        
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.dateStart">
+            <summary>
+            Дата выписки рецепта (UnixTime мс.)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.dateEnd">
+            <summary>
+            Дата окончания действия рецепта (UnixTime мс.)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.dateEndItem">
+            <summary>
+            Табличное значение продолжительности действия рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.idForm">
+            <summary>
+            ID Рецептурной формы
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.NameForm">
+            <summary>
+            ID Рецептурной формы
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.IdStatus">
+            <summary>
+            ID статуса рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.dCode">
+            <summary>
+            Диагноз по МКБ10
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.pBirthday">
+            <summary>
+            Дата рождения пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.pSnils">
+            <summary>
+            СНИЛС пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.dTextComment">
+            <summary>
+            Коментарий врача
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.IsAdult">
+            <summary>
+            Рецепт для взр
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ModelRecipeLS.dText">
+            <summary>
+            Список тегов шаблона
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.TableValueItem.id">
+            <summary>
+            ID концепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.TableValueItem.name">
+            <summary>
+            Наименование концепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.TableValueItem.value">
+            <summary>
+            Параметрическое значение
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.TableValueItem.unit">
+            <summary>
+            Единица измерения значения
+            </summary>
+        </member>
+        <member name="T:PharmTaxiApp.Models.Patient">
+            <summary>
+            Информация о пациенте
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.id">
+            <summary>
+            ulong id пациента в системе UMKB
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.name">
+            <summary>
+            Имя пациента (ник)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.email">
+            <summary>
+            e-mail пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.miscode">
+            <summary>
+            на будущее ID в МИСе
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.misid">
+            <summary>
+            на будущее ID МИСа
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.fio">
+            <summary>
+            ФИО
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.snils">
+            <summary>
+            СНИЛС
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.birthdate">
+            <summary>
+            Дата рождения (UNIXTIME). до 1970 года - отрицательная
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.sex">
+            <summary>
+            Пол (male|female)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.growth">
+            <summary>
+             Рост (см)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.weight">
+            <summary>
+             Вес (кг)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.disease">
+            <summary>
+             Основные заболевания (lib 61|25)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.co_disease">
+            <summary>
+             Сопутствующие заболевания (lib 61|25)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.pregnancy">
+            <summary>
+             Флаг беременности
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.gestation">
+            <summary>
+             Неделя беременности
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.trimester">
+            <summary>
+             Триместр беременности
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.lactation">
+            <summary>
+             Флаг кормления грудью
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.driving">
+            <summary>
+             Флаг вождения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.alcohol">
+            <summary>
+             Флаг порверки на алкоголь
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.allergy">
+            <summary>
+             Аллергия пациента (lib 62|52|37|60)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.labparams">
+            <summary>
+             Лабораторные показатели
+            </summary>        
+        </member>
+        <member name="P:PharmTaxiApp.Models.Patient.actualproto">
+            <summary>
+            Список актуальных протоколов фармтерапии.
+            Ключ - имя коллекции, тело - список BsonId.
+            </summary>
+        </member>
+        <member name="T:PharmTaxiApp.Models.GetPatient">
+            <summary>
+            Для получения актуальной фармакотерапии
+            </summary>
+        </member>
+        <member name="T:PharmTaxiApp.Models.RecipeArgs">
+            <summary>
+            Аргументы для получения рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeArgs.key">
+            <summary>
+            Постоянный ключ авторизации
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeArgs.authkey">
+            <summary>
+            Временный токен авторизации (https://cs.socmedica.com/api/user/authorization)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeArgs.device_id">
+            <summary>
+            Идентификатор устройства
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeArgs.service">
+            <summary>
+            Номер сервиса (4 - экф, 108 технический экф2)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeArgs.recipe">
+            <summary>
+            Код(номер) рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeArgs.email">
+            <summary>
+            E-mail, коротый используется при отправке рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeArgs.patient_id">
+            <summary>
+            id пациента, по которому необходимо получить список рецептов
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeArgs.SNILS">
+            <summary>
+            СНИЛС пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RecipeArgs.active_language">
+            <summary>
+            Локаль пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.PatFIOForRecps.birthdate">
+            <summary>
+            Дата рождения пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.PatFIOForRecps.SNILS">
+            <summary>
+            СНИЛС пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.PatFIOForRecps.Region">
+            <summary>
+            Регион работы аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.PatFIOForRecps.DateOfReceipt">
+            <summary>
+            Дата рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Request.key">
+            <summary>
+            Лицензионный ключ клиента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Request.authkey">
+            <summary>
+            Ключ авторизации (генерируется биллингом)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Request.service">
+            <summary>
+             индекс приложения/сервиса к которому обращается клиент
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Request.drug">
+            <summary>
+            Концепт ДВ/ТН по которому нужно взять дозировки, метод применения, первичную упаковку
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Request.active_language">
+            <summary>
+            Локаль клиента
+            </summary>
+        </member>
+        <member name="T:PharmTaxiApp.Models.RequestDrug">
+            <summary>
+            Запрос клиента к серверу для GetDosage/GetDescriptions и т.д.
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestDrug.key">
+            <summary>
+            Лицензионный ключ клиента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestDrug.authkey">
+            <summary>
+            Ключ авторизации (генерируется биллингом)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestDrug.service">
+            <summary>
+             индекс приложения/сервиса к которому обращается клиент
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestDrug.drug">
+            <summary>
+            Концепт ДВ/ТН по которому нужно взять дозировки, метод применения, первичную упаковку
+            </summary>
+            
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestDrug.active_language">
+            <summary>
+            Локаль клиента
+            </summary>
+        </member>
+        <member name="T:PharmTaxiApp.Models.RequestMustHave">
+            <summary>
+            Запрос по списку ЖНВЛП
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestMustHave.fp_id">
+            <summary>
+            FP_ID препарата на проверку
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestMustHave.tn_id">
+            <summary>
+            TN_ID препарата на проверку
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestMustHave.dv_id">
+            <summary>
+            DV_ID препарата на проверку
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestMustHave.name">
+            <summary>
+            Имя препаратов 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestMustHave.dv_name">
+            <summary>
+            Имя DV 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.RequestMustHave.price">
+            <summary>
+            Цена
+            </summary>
+        </member>
+        <member name="T:PharmTaxiApp.Models.ResponseMustHave">
+            <summary>
+            Ответ по списку ЖНВЛП
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.ResponseMustHave.must_have">
+            <summary>
+            Если находится в списке то true, если нет то false
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.userid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.statistic">
+            <summary>
+            Временной ненужное поле - сюда обычно суём счётчики времени выволнения запроса и т.д. Потом можно удалить
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.alert">
+            <summary>
+            Стандартный Алерт - для передачи ошибки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.names">
+            <summary>
+            Список имён. Ключ - id в системе умкб, тело - имя, показываемое пользователю
+            В случае работы с фронтом - все ключи зашифрованы
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.warnings">
+            <summary>
+            Список конфликтов
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.description">
+            <summary>
+            Описания (взаимодействий)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.literature">
+            <summary>
+            Список литературы
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.outcome">
+            <summary>
+            Последствия/результат
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.urls">
+            <summary>
+            Ссылки на внешние источники
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.patient">
+            <summary>
+            Данные пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.hinttype">
+            <summary>
+            Тут заголовок подсказок для значков (Id типа варнинга->id текста в names)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.SetInfoPreparations.repeal">
+            <summary>
+            Флаг отмены
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Tools.UnitsPharm.key">
+            <summary>
+            Лицензионный ключ клиента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Tools.UnitsPharm.authkey">
+            <summary>
+            Ключ авторизации (генерируется биллингом)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Tools.UnitsPharm.service">
+            <summary>
+             индекс приложения/сервиса к которому обращается клиент
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Tools.UnitsPharm.active_language">
+            <summary>
+            Индентификатор для набора получаемой информации
+            </summary>
+        </member>
+        <member name="P:PharmTaxiApp.Models.Tools.UnitsPharm.units">
+            <summary>
+            Список Id комлплексных значений, которые надо разложить на элементы
+            </summary>
+        </member>
+        <member name="T:PharmTaxiApp.Models.UPCReq">
+            <summary>
+            Класс запроса америкосовских штрихкодов
+            </summary>
+        </member>
+        <member name="T:PharmTaxiApp.Models.UPCRes">
+            <summary>
+            Класс ответа для получения инфы по америкосовским штрихкодам. Вероятно, надо бы дополнить в соответствии с данной документацией https://www.upcitemdb.com/wp/docs/main/development/responses/
+            </summary>
+        </member>
+    </members>
+</doc>

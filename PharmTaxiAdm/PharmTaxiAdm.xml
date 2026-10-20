@@ -1,0 +1,1182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PharmTaxiAdm</name>
+    </assembly>
+    <members>
+        <member name="M:PharmTaxiAdm.Methods.Drugstore.DrugstoreMethods.CreateDrugNet(PharmTaxiAdm.Models.Drugstore.DrugNetModel)">
+            <summary>
+            Создание сети аптек
+            </summary>
+            <param name="cdsModel"></param>
+        </member>
+        <member name="M:PharmTaxiAdm.Methods.Drugstore.DrugstoreMethods.CreateDrugstoreWCode(PharmTaxiAdm.Models.Drugstore.DrugstoreModel)">
+            <summary>
+            Создание Аптеки с Генерацией Кода
+            </summary>
+            <param name="cdsModel"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo._id">
+            <summary>
+            ID документа Mongo
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.isGuest">
+            <summary>
+            Гость или нет
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.distance">
+            <summary>
+            Что то для приложения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.analogs">
+            <summary>
+            Аналоги
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.fullList">
+            <summary>
+            Что то для приложения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.partners">
+            <summary>
+            Что то для приложения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.role">
+            <summary>
+            Роль
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.createdAt">
+            <summary>
+            Дата создания пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.pharms">
+            <summary>
+            Список аптек
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.email">
+            <summary>
+            Email пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.firstname">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.lastname">
+            <summary>
+            Фамилия пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Methods.MongoDS.InvitedUserToMongo.patronymic">
+            <summary>
+            Отчество пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.CompanyInfo.ogrn_ogrip">
+            <summary>
+            Код ОГРН/ОГРИП
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.CompanyInfo.inn">
+            <summary>
+            ИНН
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.dT_RowId">
+            <summary>
+            айди лицензии с системе РЗН:
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:PharmTaxiAdm.Models.DrugLic.LicInfo.regNumb" -->
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.regDate">
+            <summary>
+            Дата регистрации
+            </summary> 
+            
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licensee">
+            <summary>
+            Сведения о лицензиате(это юр лицо, например "Аптечная сеть Оз") 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licIssuer">
+            <summary>
+            Наименование лицензирующего органа
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licenseeAddress">
+            <summary>
+             Место нахождения лицензиата
+            </summary>
+            
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.ogrn_ogrip">
+            <summary>
+            Код ОГРН/ОГРИП
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.inn">
+            <summary>
+            ИНН
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.okpo">
+            <summary>
+             Код ОКПО
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.license">
+            <summary>
+            Номер лицензии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licIssueDate">
+             <summary>
+            Дата принятия решения о предоставлении лицензии 
+             </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licStartDate">
+            <summary>
+            Дата начала действия лицензии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licEndDate">
+            <summary>
+            Дата окончания действия лицензии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licConfUpdate">
+            <summary>
+            Сведения о переоформлении документа, подтверждающего наличие лицензии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licStoped">
+            <summary>
+            Сведения о приостановлении действия лицензии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licContinued">
+            <summary>
+            Сведения о возобновлении действия лицензии 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licAnnul">
+            <summary>
+            Сведения об аннулировании лицензии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.licCanceled">
+            <summary>
+            Сведения о прекращении действия лицензии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.docLicConfirm">
+             <summary>
+            Сведения о документе, подтверждающем наличие лицензии
+             </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.LicInfo.excerpt">
+            <summary>
+            Выписка
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.SimpleLicInfo.parent_id">
+            <summary>
+            ID сети (аптеки) из системы ЮМКБ, к которой относится лицензия
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.activity">
+            <summary>
+             (вид деятельности на которую выдана лицензия)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.address_fact">
+            <summary>
+             (полный адрес: индекс + город + улица + дом)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.address_fact_street">
+            <summary>
+             (короткий адрес: улица + дом)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.address_fact_zip">
+            <summary>
+             (индекс)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.code_fias">
+            <summary>
+              (хз че за код внутри росздравнадзора, но пусть будет, выглядит так: "40c70f85-2502-4a92-8aa9-4efc03c2d521")
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.dt_created">
+            <summary>
+            "2017-09-21 10:09:17" (дата создания)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.dt_edited">
+            <summary>
+             "2017-09-21 10:09:17" (дата последнего изменения)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.id">
+            <summary>
+            "766954" (айдишник внутри Росздравнадзора)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.id_create_user">
+            <summary>
+            "81841"
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.id_licenses_apps_object">
+             <summary>
+            "3638603"
+             </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.id_type_org">
+            <summary>
+            "2"
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.id_voc_revision_activity_items">
+            <summary>
+            "14687,14685,14683,14686"
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.DrugLic.RozZdravInfo.label">
+            <summary>
+             "Общество с ограниченной ответственностью \"Аптечная сеть Оз\""
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.BaseDrugNet.ParentId">
+            <summary>
+            idшник аптеки-родителя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.BaseDrugNet.TypeText">
+            <summary>
+            Сюда посылаем "Аптека"
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.BaseDrugNet.UserId">
+            <summary>
+            Юзверь аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.BaseDrugNet.Address">
+            <summary>
+            адресс
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.BaseDrugNet.License">
+            <summary>
+            Номер лицензии
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.BaseDrugNet.Title">
+            <summary>
+            название аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.BaseDrugNet.PharmId">
+            <summary>
+            ID аптеки в системе UMKB
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.BaseDrugNet.IsActive">
+            <summary>
+            Активирована ли аптека в системе ФармТакси
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.BaseDrugNet.IsHidden">
+            <summary>
+            Поле, чтоб прятать аптеку
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.DrugstoreModel.latitude">
+            <summary>
+            Координаты аптеки
+            </summary>
+            
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Drugstore.CreatedDrugStore.lic_code">
+            <summary>
+            Заготовка лицензионного ключа
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.WriteOffRequest.key">
+            <summary>
+            лицц ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.WriteOffRequest.recipe">
+            <summary>
+            Номер заказа
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.liquids">
+            <summary>
+            Назначеная фармакотерапия
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.names">
+            <summary>
+            Имена к айдишникам (если их нет в кэше) в фармакотерапии в нужной локали
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.patient">
+            <summary>
+            Пациент
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.idDoc">
+            <summary>
+            Id врача выписавшего рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.idUser">
+            <summary>
+            Id юзера, выписавшего рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.idDep">
+            <summary>
+            Id отделения, где выписали рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.idClinic">
+            <summary>
+            Id клиники, где выписали рецепт
+            </summary>        
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.dateStart">
+            <summary>
+            Дата выписки рецепта (UnixTime мс.)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.dateEnd">
+            <summary>
+            Дата окончания действия рецепта (UnixTime мс.)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.dateEndItem">
+            <summary>
+            Табличное значение продолжительности действия рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.idForm">
+            <summary>
+            ID Рецептурной формы
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.idStatus">
+            <summary>
+            Статус рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.dCode">
+            <summary>
+            Диагноз по МКБ10
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.pBirthday">
+            <summary>
+            Дата рождения пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.pSnils">
+            <summary>
+            СНИЛС пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.dTextComment">
+            <summary>
+            Коментарий врача
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeLS.dText">
+            <summary>
+            Список тегов шаблона
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.TableValueItem.id">
+            <summary>
+            ID концепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.TableValueItem.name">
+            <summary>
+            Наименование концепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.TableValueItem.value">
+            <summary>
+            Параметрическое значение
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.TableValueItem.unit">
+            <summary>
+            Единица измерения значения
+            </summary>
+        </member>
+        <member name="T:PharmTaxiAdm.Models.Patient">
+            <summary>
+            Информация о пациенте
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.id">
+            <summary>
+            ulong id пациента в системе UMKB
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.name">
+            <summary>
+            Имя пациента (ник)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.email">
+            <summary>
+            e-mail пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.miscode">
+            <summary>
+            на будущее ID в МИСе
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.misid">
+            <summary>
+            на будущее ID МИСа
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.fio">
+            <summary>
+            ФИО
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.snils">
+            <summary>
+            СНИЛС
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.birthdate">
+            <summary>
+            Дата рождения (UNIXTIME). до 1970 года - отрицательная
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.sex">
+            <summary>
+            Пол (male|female)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.growth">
+            <summary>
+             Рост (см)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.weight">
+            <summary>
+             Вес (кг)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.disease">
+            <summary>
+             Основные заболевания (lib 61|25)
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:PharmTaxiAdm.Models.Patient.coDisease" -->
+        <member name="P:PharmTaxiAdm.Models.Patient.pregnancy">
+            <summary>
+             Флаг беременности
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.gestation">
+            <summary>
+             Неделя беременности
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.trimester">
+            <summary>
+             Триместр беременности
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.lactation">
+            <summary>
+             Флаг кормления грудью
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.driving">
+            <summary>
+             Флаг вождения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.alcohol">
+            <summary>
+             Флаг порверки на алкоголь
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.allergy">
+            <summary>
+             Аллергия пациента (lib 62|52|37|60)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.labparams">
+            <summary>
+             Лабораторные показатели
+            </summary>        
+        </member>
+        <member name="P:PharmTaxiAdm.Models.Patient.actualproto">
+            <summary>
+            Список актуальных протоколов фармтерапии.
+            Ключ - имя коллекции, тело - список BsonId.
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.NewGetRecipeJSON.key">
+            <summary>
+            Постоянный ключ авторизации
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.NewGetRecipeJSON.authkey">
+            <summary>
+            Временный токен авторизации (https://cs.socmedica.com/api/user/authorization)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.NewGetRecipeJSON.device_id">
+            <summary>
+            Идентификатор устройства
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.NewGetRecipeJSON.service">
+            <summary>
+            Номер сервиса (4 - экф, 108 технический экф2)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.NewGetRecipeJSON.recipe">
+            <summary>
+            Код(номер) рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.NewGetRecipeJSON.email">
+            <summary>
+            E-mail, коротый используется при отправке рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.NewGetRecipeJSON.patient_id">
+            <summary>
+            id пациента, по которому необходимо получить список рецептов
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.NewGetRecipeJSON.active_language">
+            <summary>
+            Локаль пользователя
+            </summary>
+        </member>
+        <member name="T:PharmTaxiAdm.Models.SettingGraph">
+            <summary>
+            Параметры развертки графа
+            </summary>
+        </member>
+        <member name="T:PharmTaxiAdm.Models.ModelRecipeBase">
+            <summary>
+            Класс рецепта Святозара
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.Alert">
+            <summary>
+            Стандартный алерт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.IdUser">
+            <summary>
+            Id юзера, из под которого выписывается рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.IdKey">
+            <summary>
+            Id юзера, из под которого выписывается рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.id">
+            <summary>
+            Номер рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.LS">
+            <summary>
+            Набор ЛС из протоколов
+            первый ключ - дата(имя коллекции),
+            второй ключ - id протокола
+            третий ключ - key раствора ("N", в случае если ДВ не в растворе)
+            тело - список ДВ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.IdPatient">
+            <summary>
+            Id пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PBirthday">
+            <summary>
+            Дата рождения пациента (на момент выписки) UNIXTIME - до 1970 года - отрицательная
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PSex">
+            <summary>
+            Пол пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PAdult">
+            <summary>
+            Флаг - взрослый или детский рецепт 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PDid">
+            <summary>
+            id заболевания пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PDCode">
+            <summary>
+            Код(коды) МКБ10 заболевания пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PСhronic">
+            <summary>
+            Флаг, что заболевание хроническое
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PName">
+            <summary>
+            фамилия и инициалы пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PFirstName">
+            <summary>
+            Имя пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PLastName">
+            <summary>
+            Фамилия пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PPatronymic">
+            <summary>
+            Отчество пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PSnils">
+            <summary>
+            Снилс пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PPolicySN">
+            <summary>
+              Серия мед. полиса пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PPolicyNum">
+            <summary>
+              Номер мед. полиса пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PMedCardOrg">
+            <summary>
+              Идентификатор организации в которой зарегистрирована мед.карта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PMedCardNum">
+            <summary>
+              Номер мед.карты
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PAddress">
+            <summary>
+            Место проживания пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PCatLevel">
+            <summary>
+              Источник финансирования (варианты: федеральный бюджет, бюджет субъекта Российской Федерации, муниципальный бюджет)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PCatCode">
+            <summary>
+             Льготная категория гражданина(пациента)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PDiscount">
+            <summary>
+            % оплаты - следствие скидки по категории
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.IdDoc">
+            <summary>
+            Id врача выписавшего рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.DName">
+            <summary>
+            фамилия и инициалы врача (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.DFirstName">
+            <summary>
+            Имя врача, выписавшего рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.DLastName">
+            <summary>
+             Фамилия врача, выписавшего рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.DPatronymic">
+            <summary>
+            Отчество врача, выписавшего рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.IdClinic">
+            <summary>
+            Id клиники, где выписали рецепт или индивидульного предпринимателя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.CCode">
+            <summary>
+            Код клиники, где выписали рецепт или индивидульного предпринимателя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.COkato">
+            <summary>
+            код субъекта РФ по ОКАТО или индивидульного предпринимателя+код района, который присваивает налоговая
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.IdDep">
+            <summary>
+            Id отделения, где выписали рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.CDName">
+            <summary>
+            Имя отделения, где выписали рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.CName">
+            <summary>
+            Имя клиники, где выписали рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.CAdress">
+            <summary>
+            Адрес клиники или индивидульного предпринимателя, где выписали рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.CPhoneNumber">
+            <summary>
+            Телефон клиники, где выписали рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.COgrn">
+            <summary>
+            ОРГН клиники, где выписали рецепт или ОГРНИП индивидуального предпринимателя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PHDispName">
+            <summary>
+            фамилия и инициалы провизора
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PHDispFirstName">
+            <summary>
+            Имя провизора
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PHDispLastName">
+            <summary>
+            Фамилия провизора
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PHDispPatr">
+            <summary>
+            Отчество провизора
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PHDate">
+            <summary>
+            Дата отоваривания рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.PHFP">
+            <summary>
+            Список выданных препаратов
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.IdForm">
+            <summary>
+            Id рецептурной формы
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.IdStatus">
+            <summary>
+            Id статуса рецепта (выписан, отпущен, просрочен без отпуска)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.Cito">
+            <summary>
+            отметка “cito” - «срочно»
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.Statim">
+            <summary>
+            отметка “statim” - «немедленно» 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.Special">
+            <summary>
+            отметка отметка «По специальному назначению» (булево значение, только для бланка 107у, по умолчанию ставится true если срок действия рецепта больше 60 дней. Если срок действия рецепта меньше или равно 60 дней, то false ) 
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.SpecText">
+            <summary>
+            периодичность отпуска лекарственных препаратов (только если отметка «По специальному назначению» true) (поле типа input, куда врач должен написать «еженедельно» или «ежемесячно», или иное)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.DateStart">
+            <summary>
+            Дата создания рецепта (UnixTime в мс)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.DateEnd">
+            <summary>
+            Расчётная дата прекращения действия рецепта (UnixTime в мс)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.DateEndItem">
+            <summary>
+            Срок действия рецепта (табличные данные концепта)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.RepealDate">
+            <summary>
+            Фактическая дата прекращения действия рецепта (UnixTime в мс)
+            Ставится, если отменили действие рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.RepealDoc">
+            <summary>
+            id врача, который отменил назначение
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.ModelRecipeBase.DText">
+            <summary>
+            Комментарий к рецепту(ключ "C"), и возможность "варчаров" на всякий случай.
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.ConfirmInvite.key">
+            <summary>
+            Лицензионный ключ клиента*
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.ConfirmInvite.authkey">
+            <summary>
+            Аuthkey пользователя, который принимает приглашение*
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.ConfirmInvite.code">
+            <summary>
+            Код подтверждения приглашения*
+            </summary>      
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.ConfirmInvite.application">
+            <summary>
+            Индекс сервиса/приложения под которым создается аккаунт*
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo._id">
+            <summary>
+            ID документа Mongo
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.isGuest">
+            <summary>
+            Гость или нет
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.distance">
+            <summary>
+            Что то для приложения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.analogs">
+            <summary>
+            Аналоги
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.fullList">
+            <summary>
+            Что то для приложения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.partners">
+            <summary>
+            Что то для приложения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.role">
+            <summary>
+            Роль
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.createdAt">
+            <summary>
+            Дата создания пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.pharms">
+            <summary>
+            Список аптек
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.email">
+            <summary>
+            Email пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.firstname">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.lastname">
+            <summary>
+            Фамилия пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.middlename">
+            <summary>
+            Отчество пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.isEmailConfirmed">
+            <summary>
+            Email подтвержден? (UserCore.status==0)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InvitedUserToMongo.permissions">
+            <summary>
+            Список id сервисов пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InviteViaEmail.authkey">
+            <summary>
+            Authkey пользователя, который создает приглашение
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InviteViaEmail.key">
+            <summary>
+            Authkey пользователя, который создает приглашение
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InviteViaEmail.invitedEmail">
+            <summary>
+            Электронная почта пользователя, которого нужно пригласить
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InviteViaEmail.invitedRoleCodes">
+            <summary>
+            Коды добавляемых ролей (используется код белона)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.InviteViaEmail.application">
+            <summary>
+            Индекс сервиса/приложения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegConfirmReqUMKB.key">
+            <summary>
+            Лицензионный ключ клиента*
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegConfirmReqUMKB.email">
+            <summary>
+            Аuthkey пользователя, который принимает приглашение*
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegConfirmReqUMKB.code">
+            <summary>
+            Код подтверждения приглашения*
+            </summary>      
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegConfirmReqUMKB.service">
+            <summary>
+            id of service
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegConfirmReqUMKB.parentId">
+            <summary>
+            id of parent user
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegConfirmReqUMKB.newPassword">
+            <summary>
+            New pass
+            </summary>      
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegConfirmReqPHT.firstname">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegConfirmReqPHT.lastname">
+            <summary>
+            Фамилия пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegConfirmReqPHT.middlename">
+            <summary>
+            Отчество пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserFIO.firstname">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserFIO.lastname">
+            <summary>
+            Фамилия пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserFIO.middlename">
+            <summary>
+            Отчество пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegUserByUserReq.key">
+            <summary>
+            лицензионный ключ клиента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegUserByUserReq.service">
+            <summary>
+            индекс сервиса/приложения под которым создается аккаунт  - для ФТ должно быть равно 6
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegUserByUserReq.parentKey">
+            <summary>
+            ключ пользователя, который регистрирует. Используется, если не указан parentAuthkey
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.RegUserByUserReq.parentService">
+            <summary>
+            индекс сервиса/приложения родителя, который создает аккаунт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.BaseRegUserByUserReq.service">
+            <summary>
+            индекс сервиса/приложения под которым создается аккаунт - для ФТ должно быть равно 6
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.BaseRegUserByUserReq.parentKey">
+            <summary>
+            ключ пользователя, который регистрирует. Используется, если не указан parentAuthkey
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegistrationReq.authkey">
+            <summary>
+            ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegistrationReq.lic_key">
+            <summary>
+            заготовк лицензионного ключа
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegUMKB.key">
+            <summary>
+            ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegUMKB.service">
+            <summary>
+            id сервиса
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegUMKB.lastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegUMKB.firstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegUMKB.middleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegUMKB.lpuName">
+            <summary>
+            Имя ЛПУ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegUMKB.department">
+            <summary>
+            отделение ЛПУ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegUMKB.parent_id">
+            <summary>
+            id Главного пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.User.UserRegUMKB.roleCode">
+            <summary>
+            Заготовка лицензионного кода аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.GenerateUserAttachDrugstore.authkey">
+            <summary>
+            authkey пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.GenerateUserAttachDrugstore.key">
+            <summary>
+            key пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Models.GenerateUserAttachDrugstore.drugstoreId">
+            <summary>
+            IDшник аптеки
+            </summary>
+        </member>
+        <member name="T:PharmTaxiAdm.Services.ExternalServices">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Services.ExternalServices.DB">
+            <summary>
+            База данных СКОЛ (MongoDb)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAdm.Services.ExternalServices.DBForStupidFront">
+            <summary>
+            База данных СКОЛ (MongoDb)
+            </summary>
+        </member>
+    </members>
+</doc>

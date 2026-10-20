@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>FTConstants</AssemblyName>
+    <RootNamespace>FTConstants</RootNamespace>
+  </PropertyGroup>
+
+</Project>

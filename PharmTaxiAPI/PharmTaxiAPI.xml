@@ -1,0 +1,2306 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PharmTaxiAPI</name>
+    </assembly>
+    <members>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.Authorize(PharmTaxiAPI.Models.Authorize)">
+            <summary>
+            Авторизация
+            В ответе role либо Admin, либо Provisor, либо Patient
+            </summary>
+            <param name="data"></param>
+            <remarks>
+            Пример запроса:
+            
+            	POST /Authorize
+            	{
+            		"email": "testphtx@yopmail.com",
+            		"password": "test1234",
+            		"service": "7"
+            	}
+            	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.Authorize2(PharmTaxiAPI.Models.Authorize)">
+            <summary>
+            Авторизация
+            В ответе role либо Admin, либо Provisor, либо Patient
+            </summary>
+            <param name="data"></param>
+            <remarks>
+            Пример запроса:
+            
+            	POST /api/user/authorization2
+            	{
+            		"email": "testphtx@yopmail.com",
+            		"password": "test1234",
+            		"service": "7"
+            	}
+            	
+            </remarks>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.Authexit(System.String)">
+            <summary>
+            Выход 
+            </summary>
+            <param name="data"></param>
+            <remarks>
+            Пример запроса:
+            
+            	GET /api/user/authexit?authkey=
+            	
+            </remarks>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.GetUserInfoByEmail(PharmTaxiAdm.Models.User.GetUserInfo)">
+            <summary>
+            Получить info пользователя по email
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.CreateGuest">
+            <summary>
+            Создание гостевого пользователя. Обращение без параметров.
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.CreateInvite(PharmTaxiAdm.Models.User.InviteViaEmail)">
+             <summary>
+             Создание приглашения и отправка его на почту
+             </summary>
+             <param name="args">Параметры для создания приглашения и отправки на почту</param>
+             <remarks>
+             Пример запроса:
+            
+            		POST /CreateInvite
+            		{
+            			"authkey": "fs43ASFDAfsdas34i",
+            			"invitedEmail": "qwerty@example.com",
+            			"invitedRoleCodes":["КОД АПТЕКИ, ПОЛУЧЕННЫЙ ОТ КОНТРОЛЛЕРА MassiveCreateDrugstore","КОД АПТЕКИ, ПОЛУЧЕННЫЙ ОТ КОНТРОЛЛЕРА MassiveCreateDrugstore"]
+            		}
+             </remarks> 
+             
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.ConfirmInviteByAuthkey(PharmTaxiAdm.Models.User.ConfirmInvite)">
+             <summary>
+             Подтверждения приглашения через Authkey
+             </summary>
+             <param name="args">Параметры для подтверждения приглашения</param>
+             <remarks>
+             Пример запроса:
+            
+            		POST /ConfirmInviteByAuthkey
+            		{
+            			"authkey": "АУТКЕЙ НЕОБХОДИМО ПОЛУЧИТЬ ПРИ ПОМОЩИ КОНТРОЛЛЕРА Authorize",
+            			"code": "123456"
+            		}
+             </remarks> 
+             
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.CreateSlaveWithEmail(PharmTaxiAdm.Models.User.AuthKeyByLicKey)">
+            <summary>
+            Вам нужен раб - платите three hundred bucks и fucking slave - ваш. 
+            Главное - прислать email будущего раба. 
+            Можно ещё прислать id fisting (но мы можем сами догадаться)
+            </summary>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.CreateUserFromGuest(PharmTaxiAPI.Models.UserFromGuest)">
+             <summary>
+             Создание пользователя из гостя 
+             </summary>
+             <param name="args">Параметры для пользователя, который создается из гостя</param>
+             <remarks>
+             Пример запроса:
+            
+            		POST /CreateUserFromGuest
+            		{
+            			"authkey": "fs43ASFDAfsdas34i"
+            			"email": "123@example.com",
+            			"password": "1234abc",
+            			"firstName": "Иван",
+            			"lastName": "Иванов",
+            			"middleName": "Иванович"
+            		}
+             </remarks>
+             
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.GenerateUser(PharmTaxiAdm.Models.User.AuthKeyByLicKey)">
+            <summary>
+            Контроллер для генерации подчинённого пользователя ФармТакси для аптек
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.GenerateUserAttachDrugstore(PharmTaxiAdm.Models.GenerateUserAttachDrugstore)">
+            <summary>
+            Создать пользователя и прикрепить к нему аптеку
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.GetUserIdByAuthkey(PharmTaxiAPI.Models.GetBy)">
+            <summary>
+            Получить id пользователя по ауткею
+            в ответе role либо Admin, либо Provisor, либо Patient
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.Register(PharmTaxiAdm.Models.User.UserRegistrationReq)">
+            <summary>
+            Контроллер для регистрации пользователя ФармТакси для аптек
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.RegisterWNet(PharmTaxiAdm.Models.User.DrugUserCrR)">
+            <summary>
+            Контроллер для ресгистрации с созданием сети
+            </summary>
+            <param name="data"></param>
+            <remarks>
+            Пример запроса:
+            	POST /RegisterWNet
+            	{
+            		 "lastname": "Tesxt",
+            		 "firstname":"Tesxt",
+            		 "middlename": "Tesxt",
+            		 "email": "test_xxxx@yopmail.com",
+            		 "password": "test1234",
+            		 "service": "7",
+            		 "drugNet": {
+            			"typeText": "Сеть Аптек",
+            			"address": "Москва, ул. Кикабидзе, 50",
+            			"license": "2ппу323109",
+            			"phone": "555-55-55",
+            			"title": "Сеть аптек Планета Чурок X"
+            		}
+            	}
+            </remarks>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.Invite(PharmTaxiAdm.Models.User.RegUserByUserReq)">
+            <summary>
+            Самая Новая Версия ПРИГЛАШАЛКИ! Использовать её!
+            </summary>
+            <remarks>{  
+            "authkey": "СЮДА ВСТАВЛЯЕМ АУТКЕЙ ИЗ КОНТРОЛЛЕРА AUTHORIZE ДЛЯ АПТЕКИ",   
+            "email": "inv_test@yopmail.com",   
+            "firstname": "Test",   
+            "lastname": "Test",   
+            "middlename": "Test",   
+            "roleCode": "_237YFS5KXKFPM" 
+            }</remarks>
+            <example>{  
+            "authkey": "СЮДА_ВСТАВЛЯЕМ_АУТКЕЙ_ИЗ_КОНТРОЛЛЕРА_AUTHORIZE_ДЛЯ_АПТЕЧНОЙ_СЕТИ",   
+            "email": "inv_test@yopmail.com",   
+            "firstname": "Test",   
+            "lastname": "Test",   
+            "middlename": "Test",   
+            "roleCode": "_237YFS5KXKFPM" 
+            }</example>
+            
+            <param name="data"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.RegistrationConfirm(PharmTaxiAdm.Models.User.RegConfirmReqPHT)">
+            <summary>
+            Подтверждение регистрации
+            </summary>
+            <param name="data"></param>
+            <remarks>{  "email": "inv_test@yopmail.com",  "code": "КОД ИЗ ПИСЬМА",  "service": "6",  "middlename": "NotTest", "newPassword": "test1234", "firstname": "NotTest", "lastname": "NotTest",  "middlename": "NotTest"}</remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.ConfirmEmail(PharmTaxiAdm.Models.User.ReConfirmEmailArgs)">
+            <summary>
+            Запрос на повторную отправку кода подтверждения регистрации
+            </summary>
+            <remarks>
+            POST /ReConfirmEmail
+            
+            	Пример:
+            		{
+            			"email": "yikajiw692@veb27.com"
+            		}	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.ChangeUserFIO(PharmTaxiAdm.Models.User.UserFIOReq)">
+            <summary>
+            Изменение ФИО пользователя самим пользователем.
+            Отправляются новые ФИО + authkey или key
+            </summary>
+            <param name="data"></param>
+            <example>{
+            "authkey": "AUTHKEY ПОЛУЧАЕМ В КОНТРОЛЛЕРЕ AUTHORIZE",
+            "firstname": "Новое Имя",
+            "middlename": "Новое Отчество",
+            "lastname": "Новая Фамилия"
+            }</example>
+            <remarks>
+            {
+            "authkey": "AUTHKEY ПОЛУЧАЕМ В КОНТРОЛЛЕРЕ AUTHORIZE",
+            "firstname": "Новое Имя",
+            "middlename": "Новое Отчество",
+            "lastname": "Новая Фамилия"
+            }
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.AuthControllers.GetPatByUserId(PharmTaxiAPI.Models.GetBy)">
+            <summary>
+            Получение пациента по id пользователя
+            </summary>
+            <param name="data"></param>
+            <remarks>]
+            
+            POST /GetPatByUserId
+            
+            {
+            
+            		"authkey": "АУТКЕЙ НАДО ПОЛУЧИТЬ ИЗ AUTHORIZE",
+            		
+            		"userid": "10169"
+            
+            }
+            	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.Check.CheckController.Warnings(System.Object)">
+            <summary>
+            Check Drug Warnings
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.Drugs.DrugsController.Dosages(PharmTaxiApp.Models.Request)">
+            <summary>
+            Получение дозировок, ЛФ, первичных упаковок
+            </summary>
+            <param name="args">GetDosage.Models.Request</param>
+            <returns>GetDosage.Models.Answer</returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.Drugs.DrugsController.FPDosages(PharmTaxiApp.Models.Request)">
+            <summary>
+            Получение дозировок, ЛФ, первичных упаковок
+            </summary>
+            <param name="args">GetDosage.Models.Request</param>
+            <returns>GetDosage.Models.Answer</returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.Drugs.DrugsController.CreateDosage(PharmTaxiApp.Models.Request)">
+            <summary>
+            Create Dosages
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.Drugs.DrugInfo.Info(PharmTaxiApp.Models.RequestDrug)">
+            <summary>
+            Get Info about drug
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.CreateDrugNet(PharmTaxiAdm.Models.Drugstore.DrugNetModel)">
+            <summary>
+            Контроллер для создания сети аптек
+            </summary>
+            <param name="args"></param>
+            <remarks>
+            Пример запроса:
+            	
+            	POST /RegisterWNet
+            	{
+            			"authkey":"НАДО ПОЛУЧИТЬ ВАЛИДНЫЙ АУТКЕЙ",
+            			"parentId": "ID Родителя",
+            			"typeText": "Сеть Аптек",
+            			"address": "Москва, ул. Кикабидзе, 55",
+            			"license": "2ппу3231",
+            			"phone": "555-55-55",
+            			"title": "Сеть аптек Планета Чурок Доча"
+            		}
+            </remarks>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.CreateDrugstore(PharmTaxiAdm.Models.Drugstore.DrugstoreModel)">
+            <summary>
+            Создание аптеки
+            </summary>
+            <param name="dataO"></param>
+            <returns></returns>
+            <remarks>
+            Пример запроса для создания аптеки:
+            
+            	POST /CreateDrugstore
+            	{
+            		"authkey": "АУТКЕЙ НЕОБХОДИМО ПОЛУЧИТЬ ПРИ ПОМОЩИ КОНТРОЛЛЕРА Authorize",
+            		"ParentId": "ID сети аптек" 
+            		"TypeText": "Аптека",
+            		"Address": "Москва, ул. Нобеля 1",
+            		"License": "1111111йв",
+            		"Phone": "+7 926 000 00 11",
+            		"Title": "TEST",
+            		"latitude": 75.14,
+            		"longitude": 55.14,
+            		"mon" : {
+            			"StartTime": 800,
+            			"EndTime": 2100,
+            			"BreakStart": 1200,
+            			"BreakEnd": 1300
+            		},
+            		"tue" : {
+            			"StartTime": 800,
+            			"EndTime": 2100,
+            			"BreakStart": 1200,
+            			"BreakEnd": 1300
+            		},
+            		"wed" : {
+            			"StartTime": 800,
+            			"EndTime": 2100,
+            			"BreakStart": 1200,
+            			"BreakEnd": 1300
+            		},
+            		"thu" : {
+            			"StartTime": 800,
+            			"EndTime": 2100,
+            			"BreakStart": 1200,
+            			"BreakEnd": 1300
+            		},
+            		"fri" : {
+            			"StartTime": 800,
+            			"EndTime": 2100,
+            			"BreakStart": 1200,
+            			"BreakEnd": 1300
+            		},
+            		"sat" : {
+            			"StartTime": 800,
+            			"EndTime": 2100,
+            			"BreakStart": 1200,
+            			"BreakEnd": 1300
+            		},
+            		"sun" : {
+            			"StartTime": 800,
+            			"EndTime": 2100,
+            			"BreakStart": 1200,
+            			"BreakEnd": 1300
+            		}
+            	}
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.MassiveCreateDrugstore(PharmTaxiAdm.Models.Drugstore.DrugstoreModelList)">
+            <summary>
+            Создать список аптеку и вернуть заготовок лицензионного ключа для них 
+            </summary>
+            <param name="data"></param>
+            <remarks>
+            Пример запроса для множественного создания аптек:
+            
+            	POST /MassiveCreateDrugstore
+            	{
+            		"pharms": [
+            			{
+            				"authkey": "АУТКЕЙ НЕОБХОДИМО ПОЛУЧИТЬ ПРИ ПОМОЩИ КОНТРОЛЛЕРА Authorize",
+            				"ParentId": "ID сети аптек",
+            				"TypeText": "Аптека",
+            				"Address": "Москва, ул. Нобеля 1",
+            				"License": "1111111йв",
+            				"Phone": "+7 926 000 00 11",
+            				"Title": "TEST",
+            				"latitude": 75.14,
+            				"longitude": 55.14,
+            				"mon" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"tue" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"wed" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"thu" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"fri" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"sat" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"sun" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				}
+            			},
+            			{
+            				"authkey": "АУТКЕЙ, ранее полученный (от Authorize)",
+            				"ParentId": "ID сети аптек",
+            				"TypeText": "Аптека",
+            				"Address": "Москва, ул. Нобеля 3",
+            				"License": "11542361йв",
+            				"Phone": "+7 926 000 20 11",
+            				"Title": "Нобель",
+            				"latitude": 75.14,
+            				"longitude": 55.14,
+            				"mon" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"tue" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"wed" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"thu" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"fri" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"sat" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				},
+            				"sun" : {
+            					"StartTime": 800,
+            					"EndTime": 2100,
+            					"BreakStart": 1200,
+            					"BreakEnd": 1300
+            				}
+            			}
+            		]
+            		
+            	}
+            	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.UpdateDrugstore(PharmTaxiAdm.Models.Drugstore.DrugstoreModel)">
+            <summary>
+            Обновить информацию аптеки
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.GetPharmOrders(PharmTaxiAdm.Models.User.AuthKeyByLicKey)">
+            <summary>
+            Получение всех актвных заказов для аптеки
+            </summary>
+            <remarks>
+            Пример запроса:
+            
+            	POST /GetPharmOrders
+            	{
+            		"authkey": "АУТКЕЙ НЕОБХОДИМО ПОЛУЧИТЬ ПРИ ПОМОЩИ КОНТРОЛЛЕРА Authorize"
+            	}
+            	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.ChangeAssortiment(PharmTaxiAPI.Models.APIChangeAss)">
+            <summary>
+            Контроллер для изменения ассортимента
+            </summary>
+            <param name="data"></param>
+            <remarks>
+            Пример запроса:
+            
+            	POST /ChangeAssortiment
+            	{
+            		"authkey": "АУТКЕЙ НЕОБХОДИМО ПОЛУЧИТЬ ПРИ ПОМОЩИ КОНТРОЛЛЕРА Authorize",
+            		"lass": [
+            			{
+            				"pharmId": 392215,
+            				"pharm_pack_id": "55326",
+            				"fp_id": "i3lKz4MbKnAeXRA24YqEng==",
+            				"qty": 10,
+            				"qty_free": 2,
+            				"price": 1001.5
+            			}
+            		]
+            	}
+            	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.GetAssortiment(PharmTaxiAPI.Models.APIRequestAss)">
+            <summary>
+            Контроллер для получения ассортимента.
+            </summary>
+            <param name="data"></param>
+            <remarks>
+            Пример запроса:
+            
+            	POST /GetAssortiment
+            	
+            	{
+            		"authkey": "АУТКЕЙ НЕОБХОДИМО ПОЛУЧИТЬ ПРИ ПОМОЩИ КОНТРОЛЛЕРА Authorize"
+            	}
+            	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.LoadAssortiment(PharmTaxiAPI.Models.APIRequestAss)">
+            <summary>
+            Контроллер для загрузки ассортимента. Первоначально создавался для интеграции вместо WCF
+            </summary>
+            <param name="dataO"></param>
+            <returns></returns>
+            <remarks>
+            Пример запроса:
+            
+            	POST /LoadAssortiment
+            	{
+            		"authkey": "АУТКЕЙ НЕОБХОДИМО ПОЛУЧИТЬ ПРИ ПОМОЩИ КОНТРОЛЛЕРА Authorize",
+            		"Lass": [
+            			{
+            				"PharmId": 392215,
+            				"PharmLogin": "392215",
+            				"PharmPackId": "5004951",
+            				"Barcode": "4030685259512",
+            				"Name": "Амарил, тбл 4мг №30",
+            				"TradeName": "Амарил, тбл 4мг №30",
+            				"Dosage": "4мг",
+            				"form": "таблетки",
+            				"RegistrationCertificate": "УП/321023",
+            				"Type": "внутрь",
+            				"Pack": "12",
+            				"Manufacturer": "Aventis Pharma Deutschland GmbH",
+            				"Country": "Германия",
+            				"PharmacoTherapeuticGroup": "Лекарственные средства",
+            				"Quantity": 15,
+            				"QuantityFree": 8,
+            				"SellingPrice": 1300.5,
+            				"SellingPriceType": "1"
+            			}
+            		]
+            	}
+            	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.RemoveAssortiment(PharmTaxiAPI.Models.APIRequestAss)">
+            <summary>
+            Контроллер для удаления ассортимента.
+            </summary>
+            <param name="data"></param>
+            <remarks>
+            Пример запроса:
+            
+            	POST /RemoveAssortiment
+            	{
+            		"authkey": "АУТКЕЙ НЕОБХОДИМО ПОЛУЧИТЬ ПРИ ПОМОЩИ КОНТРОЛЛЕРА Authorize",
+            		"Lass": [
+            			{
+            				"PharmId": 392215,
+            				"PharmLogin": "392215",
+            				"PharmPackId": "5004951",
+            				"Barcode": "4030685259512",
+            				"Name": "Амарил, тбл 4мг №30",
+            				"TradeName": "Амарил, тбл 4мг №30",
+            				"Dosage": "4мг",
+            				"form": "таблетки",
+            				"RegistrationCertificate": "УП/321023",
+            				"Type": "внутрь",
+            				"Pack": "12",
+            				"Manufacturer": "Aventis Pharma Deutschland GmbH",
+            				"Country": "Германия",
+            				"PharmacoTherapeuticGroup": "Лекарственные средства",
+            				"Quantity": 15,
+            				"QuantityFree": 8,
+            				"SellingPrice": 1300.5,
+            				"SellingPriceType": "1"
+            			}
+            		]
+            	}
+            	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.UploadLics">
+            <summary>
+            Старый контроллер, доставшийся от старого ФармТакси. Отвечал за работу с ассортиментом. Принимал данные в формате multipart/from-data
+            Сейчас служит для потенциальной совместимости
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.Post">
+            <summary>
+            Старый контроллер, доставшийся от старого ФармТакси. Отвечал за работу с ассортиментом. Принимал данные в формате multipart/from-data
+            Сейчас служит для потенциальной совместимости
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.Sync">
+            <summary>
+            Контроллер для синхронизации (С ЗАТИРАНИЕМ АССОРТИМЕНТА АПТЕКИ) файлом
+            </summary>
+            <remarks>		bool ForceLoad = false; string key = "AUTHKEY";		file = "";	files="";	string mode = "WORK";		string operation = null;		string key = null;		string lang = "ru";
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.SyncJSON(PharmTaxiAPI.Models.ForceLoadAPIRequestAss)">
+            <summary>
+            Контроллер для синхронизации в рамках интеграции
+            Слать то же, что и на контроллер загрузки ассортимента, различие только в одном bool - ForceLoad
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.Recognize">
+            <summary>
+            Контроллер для распознавания
+            Принимает запрос в формате multipart-form/data
+            </summary>
+            <remarks>
+            Пример запроса:	
+            	
+            	POST /Recognize
+            	{
+            		file: (binary)	
+            		files: (binary)	
+            		authkey: "АУТКЕЙ НЕОБХОДИМО ПОЛУЧИТЬ ПРИ ПОМОЩИ КОНТРОЛЛЕРА Authorize"	
+            		key: "Лицензионный ключ"
+            		lang: ru
+            	}
+            
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.LoadPrice(PharmTaxiAPI.Models.APIRequestPrice)">
+            <summary>
+             Контроллер для загрузки цен.Первоначально создавался для интеграции вместо WCF
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.GetDrugstoresByUserId(PharmTaxiAPI.Models.GetBy)">
+            <summary>
+            Получить аптеки пользователя
+            role либо Admin, либо Provisor, либо Patient
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.GetDrugstoresByPharmId(PharmTaxiAPI.Models.GetByPharmId)">
+            <summary>
+            Получить все связанные аптеки. Передать authkey и id аптеки
+            В ответе role либо Admin, либо Provisor, либо Patient
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.AttachDrugstoreToUser(PharmTaxiAdm.Models.AttacheDrugstore)">
+            <summary>
+            Контроллер для добавления аптеки пользователю ФармТакси для аптек
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.CreateDrugstoreWithLicKey(System.Object)">
+            <summary>
+            Создать аптеку и вернуть заготовок лицензионного ключа для неё (для внутреннего использования)
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.CreateDrugstoreWLKList(PharmTaxiAdm.Models.Drugstore.DrugstoreModelList)">
+            <summary>
+            Создать список аптек и вернуть заготовок лицензионного ключа для них (для внутреннего использования)
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.CreateDrugstoreWLKList_Test(PharmTaxiAPI.Models.CreateDrugstoreWLicReq)">
+            <summary>
+            Создать список аптек и вернуть заготовок лицензионного ключа для них
+            </summary>
+            <param name="data"></param>
+            <remarks>{   "authkey": "9FDbb8BQ3q8mxYcHlYCQDoXl",   "parent_id": 394737,   "userId": "10267",   "data": [     {       "parent_id": 394737,       "userId": "10267",       "license": "ЛО-77-02-011246",       "name": "сетевая 2",       "issuing": "string",       "address": "string",       "dateStart": "string",       "dateEnd": "string",       "ogrn": "string",       "inn": "string",       "order": "string",       "orderFresh": "string",       "pharms": [         {           "name": "аптека первая",           "activity": "string",           "address_fact": "улица Чистяковой, 12",           "address_fact_street": "улица Чистяковой, 12",           "address_fact_zip": "143005",           "appartment_num": "12",           "building_num": "string",           "city": "Москва",           "code_fias": "string",           "district_label": "string",           "dt_created": "17.11.2020",           "dt_edited": "string",           "ext_city_id": "string",           "ext_db": "string",           "ext_id": "string",           "ext_org": "string",           "ext_region_id": "string",           "ext_type_id": "string",           "fake": "string",           "from_b2b": "string",           "house_num": "string",           "id": "string",           "id_create_user": "string",           "id_department": "string",           "id_licenses_apps_object": "string",           "id_organization": "string",           "id_revision": "string",           "id_type_org": "string",           "id_user_edited": "string",           "id_voc_city": "string",           "id_voc_district": "string",           "id_voc_licenser": "string",           "id_voc_producer": "string",           "id_voc_region": "string",           "id_voc_revision_activity_items": "string",           "id_voc_revision_object_type": "string",           "id_voc_settlements": "string",           "ids_voc_revision_activities": "string",           "is_active_b2b": "string",           "is_actual": "string",           "is_foreign": "string",           "is_med_business_check": "string",           "is_not_code_fias": "string",           "is_save_region": "string",           "kladr": "string",           "label": "string",           "label_firm": "string",           "label_short": "string",           "okato": "string",           "oktmo": "string",           "region": "string",           "street": "string",           "address": "string",           "addressVCId": 0,           "isActive": true,           "license": "string",           "licenseVCId": 0,           "longId": 0,           "nameLongId": 0,           "parentId": 0,           "pharmId": 0,           "phone": "string",           "phoneVCId": 0,           "title": "string",           "typeText": "string",           "userId": "string",           "users": [             {               "longId": 0             }           ],           "latitude": 0,           "longitude": 0,           "mon": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "tue": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "wed": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "thu": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "fri": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "sat": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "sun": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "isHidden": true         }       ]     }   ] }</remarks>
+            <example>{   "authkey": "9FDbb8BQ3q8mxYcHlYCQDoXl",   "parent_id": 394737,   "userId": "10267",   "data": [     {       "parent_id": 394737,       "userId": "10267",       "license": "ЛО-77-02-011246",       "name": "сетевая 2",       "issuing": "string",       "address": "string",       "dateStart": "string",       "dateEnd": "string",       "ogrn": "string",       "inn": "string",       "order": "string",       "orderFresh": "string",       "pharms": [         {           "name": "аптека первая",           "activity": "string",           "address_fact": "улица Чистяковой, 12",           "address_fact_street": "улица Чистяковой, 12",           "address_fact_zip": "143005",           "appartment_num": "12",           "building_num": "string",           "city": "Москва",           "code_fias": "string",           "district_label": "string",           "dt_created": "17.11.2020",           "dt_edited": "string",           "ext_city_id": "string",           "ext_db": "string",           "ext_id": "string",           "ext_org": "string",           "ext_region_id": "string",           "ext_type_id": "string",           "fake": "string",           "from_b2b": "string",           "house_num": "string",           "id": "string",           "id_create_user": "string",           "id_department": "string",           "id_licenses_apps_object": "string",           "id_organization": "string",           "id_revision": "string",           "id_type_org": "string",           "id_user_edited": "string",           "id_voc_city": "string",           "id_voc_district": "string",           "id_voc_licenser": "string",           "id_voc_producer": "string",           "id_voc_region": "string",           "id_voc_revision_activity_items": "string",           "id_voc_revision_object_type": "string",           "id_voc_settlements": "string",           "ids_voc_revision_activities": "string",           "is_active_b2b": "string",           "is_actual": "string",           "is_foreign": "string",           "is_med_business_check": "string",           "is_not_code_fias": "string",           "is_save_region": "string",           "kladr": "string",           "label": "string",           "label_firm": "string",           "label_short": "string",           "okato": "string",           "oktmo": "string",           "region": "string",           "street": "string",           "address": "string",           "addressVCId": 0,           "isActive": true,           "license": "string",           "licenseVCId": 0,           "longId": 0,           "nameLongId": 0,           "parentId": 0,           "pharmId": 0,           "phone": "string",           "phoneVCId": 0,           "title": "string",           "typeText": "string",           "userId": "string",           "users": [             {               "longId": 0             }           ],           "latitude": 0,           "longitude": 0,           "mon": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "tue": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "wed": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "thu": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "fri": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "sat": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "sun": {             "startTime": 100,             "endTime": 2100,             "breakStart": 0,             "breakEnd": 0           },           "isHidden": true         }       ]     }   ] }</example>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.WriteOff(PharmTaxiAdm.Models.WriteOffRequest)">
+             <summary>
+             Контроллер списания
+             </summary>
+             <param name="data"></param>
+             <remarks>
+             POST 
+            		/WriteOff
+            		{
+            			"pharmId": "395661",
+            			"authkey": "АУТКЕЙ ПОЛУЧИТЬ ЧЕРЕЗ АВТОРИЗАЦИЮ",
+            			"medicaments": [
+            				{
+            					"id": "OX/R1LlhUWCmIAAhggmSGg==",
+            					"packs": 1,
+            					"price": 93
+            				}
+            			],
+            			"recipe": "_U6K",
+            			"status": "2"          /// status заказа: -1 - отменён; 0 - в обработке; 1 - готов к выдаче; 2 - выдан
+            		}
+            </remarks>
+            <example> example
+            		{
+            			"pharmId": "395661",
+            			"authkey": "bUiprI4Xlvn76F68Tg0bEVMc",
+            			"medicaments": [
+            				{
+            					"id": "OX/R1LlhUWCmIAAhggmSGg==",
+            					"packs": 1,
+            					"price": 93
+            				}
+            			],
+            			"recipe": "_U6K",
+            			"status": "2"
+            		}
+            </example>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.PharmController.getDrugstoreOrders(PharmTaxiAdm.Models.User.AuthKeyByLicKey)">
+            <summary>
+            Получение всех актвных заказов для аптеки
+            </summary>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.ProcessesController.Get">
+            <summary>
+            как бы домашняя страница
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.ProcessesController.Test">
+            <summary>
+            Тест
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.ProcessesController.GetProcessKey(System.Guid)">
+            <summary>
+            получение id процесса
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.ProcessesController.Check(PharmTaxiApp.Models.CheckReq)">
+            <summary>
+            Проверка подлинности препарата.
+            Принимает дата матрикс, штрих код формата EAN13 или UPC, либо серийный номер препарата.
+            Полная информация о подлинности препарата приходит только по дата матриксу!
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <response code="200">Информация была получена целиком, или частично</response>
+            <response code="400">Информация не была найдена либо произошла ошибка</response>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.ProcessesController.Detect">
+            <summary>
+            какая-то фигня от старого ФармТакси
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.ProcessesController.Actual(PharmTaxiApp.Models.GP2)">
+             <summary>
+             Получение актуальной фармакотерапии
+             </summary>
+             <param name="args"></param>
+             <remarks>
+             Пример запроса:
+            
+            		POST /Actual
+            		{
+            			"authkey": "fs43ASFDAfsdas34i",
+            			"email": "1st_man@mail.ru"
+            		}
+             </remarks> 
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.ProcessesController.CheckMustHave(PharmTaxiApp.Models.RequestMustHave)">
+            <summary>
+            Проверка препарата по списку ЖНВЛП
+            </summary>
+            <param name="rqst"></param>
+            <remarks>
+            Пример запроса 1:
+            	POST /CheckMustHave
+            	{
+            		"fp_id": "",
+            		"tn_id": "",
+            		"dv_id": "pDKBBXF0ryDeaL3sGeYxBQ=="
+            	}
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.GetRecipeJson(PharmTaxiAPI.Models.GetRecipeJSON)">
+            <summary>
+            Получение JSONа рецепта
+            </summary>
+            <param name="argd"></param>
+            <remarks>
+            Пример запроса:
+            
+            	POST /GetRecipeJson
+            	{
+            		"receiptsCodes": [
+            			"NCW"
+            		],
+            		"receiptCode": "NCW"
+            	}
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.RecipeRelease_old(PharmTaxiAPI.Models.RecipReleaseReq)">
+            <summary>
+            Контроллер для отпуска рецептов (интеграция)
+            </summary>
+            <param name="argd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.RecipeReleaseInt(PharmTaxiAPI.Models.RecipeReleaseReq)">
+            <summary>
+            Внутренний контроллер для отпуска рецепта
+            Принимает на вход класс рецепта ЭКФа
+            Можно заполнить СНИЛС(PSnils)/id Пациента(IdPatient), а можно простро указать поле id - там лежит номер рецепта
+            </summary>
+            <param name="argd"></param>
+            <remarks>
+            POST /RecipeReleaseInt
+            
+            	Пример:
+            	
+            		{
+            			"authkey":"СЮДА ВСТАВЛЯЕМ АУТКЕЙ ИЗ КОНТРОЛЛЕРА AUTHORIZE ДЛЯ АПТЕКИ",
+            			"id": "YJQ"
+            		}
+            		
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.RecipeRelease(PharmTaxiAPI.Methods.Recipe.Model.RecipeReleaseArg)">
+            <summary>
+            Внутренний контроллер для отпуска рецепта
+            </summary>
+            <param name="argd"></param>
+            <remarks>
+            Если recipeFullRelease = true и fullReleaseStatus != 0, то статус самого рецепта и всех ЛС будет fullReleaseStatus, 
+            Если нет то изменится статус у препоратов которые есть в drugStatuses
+            Нужно заполнить authkey или key, fullReleaseStatus если recipeFullRelease = true, drugStatuses если recipeFullRelease = false, и recipeId.
+            Расшифровка idStatus в рецепте 0 - активный, 1 - частично обслужен, 2 - обслужен, 3 - просрочен без обслуживания, 4 - просрочен и частично обслужен, 5 - просрочен и обслужен.
+            
+            POST /RecipeRelease
+            
+            	Пример:
+            		{
+            			"authkey": "",
+            			"recipeId": "92Q",
+            			"pharmId": 0,
+            			"pharmName": "аптечка",
+            			"recipeFullRelease": false,
+            			"releaseMedicaments": true,
+            			"drugStatuses": [
+            				{
+            				    "key": "Drug_0002",
+            				    "idStatus": 3,
+            				    "medicaments":[
+                                    {
+                                        "id": "OX/R1LlhUWCmIAAhggmSGg==",
+                                        "packs": 1,
+                                        "price": 105
+                                    }
+                                ]
+            				},
+            				{
+            				    "key": "Drug_0003",
+            				    "idStatus": 1
+            				}
+            			]
+            		}	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.GetRecipeAndHistory(PharmTaxiAPI.Methods.Recipe.Model.RecipeAndHistoryArgs)">
+            <summary>
+            Внутренний контроллер для получения рецепта и опционально истории по нему
+            Нужно заполнить authkey или key, recipeId
+            </summary>
+            <param name="argd"></param>
+            <remarks>
+            Расшифровка idStatus в рецепте 0 - активный, 1 - частично обслужен, 2 - обслужен, 3 - просрочен без обслуживания, 4 - просрочен и частично обслужен, 5 - просрочен и обслужен.
+            
+            POST /GetRecipeAndHistory
+            
+            	Пример:
+            		{
+            			"authkey": "",
+            			"recipeId": "92Q",
+            			"key":"",
+            			"getHistory": true
+            		}	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.SearchRecipes(PharmTaxiAPI.Methods.Recipe.Model.SearchRecipesArgs)">
+            <summary>
+            Внутренний контроллер для получения списка рецептов
+            </summary>
+            <param name="argd"></param>
+            <remarks>
+            Поиск работает отдельно для каждого поля и они не влияют друг на друга, можно заполнить как одно поле, так и все, snils должен быть в формате 000-000-000(тут пробел)00
+            Нужно заполнить recipeId или snils или email
+            Расшифровка idStatus в рецепте 0 - активный, 1 - частично обслужен, 2 - обслужен, 3 - просрочен без обслуживания, 4 - просрочен и частично обслужен, 5 - просрочен и обслужен.
+            
+            POST /SearchRecipes
+            
+            	Пример:
+            		{
+            		    "authkey":"",
+            			"recipeId": "92Q",
+            			"snils": "345-353-464 56",
+            			"email": "gfhf@fgh.com"
+            		}	
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.CheckPrescript(PharmTaxiAPI.Models.RecipeReleaseReq)">
+            <summary>
+            Внутренний контроллер для проверки статуса рецепта
+            Принимает на вход класс рецепта ЭКФа
+            достаточно указать id - номер рецепта и authkey
+            </summary>
+            <param name="argd"></param>
+            <remarks>
+            POST /CheckPrescript
+            
+            	Пример:
+            	
+            		{
+            			"authkey":"СЮДА ВСТАВЛЯЕМ АУТКЕЙ ИЗ КОНТРОЛЛЕРА AUTHORIZE ДЛЯ АПТЕКИ",
+            			"id": "YJQ"
+            		}
+            		
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.GetRecipeURL(SMReceipt.Global.Models.SearchReceipt)">
+            <summary>
+            Получить URL рецепта, по которому располагается бланк рецепта
+            </summary>
+            <param name="argd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.GetErpPrescrShort(PharmTaxiApp.Models.eRp.Request.PrescrList)">
+            <summary>
+            Получение короткого рецепта из eRp
+            </summary>
+            <param name="data"></param>
+            <example>
+            Пример запроса рецептов по человеку со СНИЛС «000-000-600 02»:
+            {
+            "snils": "00000060002",
+            "take": "20"
+            }
+            </example>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.GetErpPrescrFull(PharmTaxiApp.Models.eRp.Request.PrescrList)">
+            <summary>
+            получение полного рецепта из eRp
+            </summary>
+            <param name="data"></param>
+            <example>
+            Пример запроса рецептов по человеку со СНИЛС «000-000-600 02»:
+            {
+            "snils": "00000060002",
+            "take": "20"
+            }
+            </example>
+            
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.SavePrescript(System.Object)">
+            <summary>
+            Сохранение ЛН (аптечки)
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.SaveOrder(PharmTaxiAPI.Models.SaveOrderD)">
+            <summary>
+            Сохранение Заказов
+            </summary>
+            <param name="args"></param>
+            <remarks>
+            Пример запроса:
+            
+            POST /SaveOrder
+            {
+            	"authkey": "HLtvDMmz3qZLlT4HboIPYx0S",  
+            	"order": {    
+            		"pharm_id": 395661,    
+            		"user_id": "9464",            
+            		"drugs": 
+            			[                
+            				{                       
+            					"id": "NKTWBFHcxsRO3SG0Xww7EA==",                       
+            					"packs": 1,                       
+            					"price": 75				
+            				}            
+            			],    
+            		"isActive": true,    
+            		"status": 0,    
+            		"delivery": false  
+            	}
+            }
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.SaveForeignOrder(PharmTaxiAPI.Models.SaveOrderD)">
+            <summary>
+            Сохранение Заказов Аптекой
+            </summary>
+            <param name="args"></param>
+            <remarks>
+            Пример запроса:
+            
+            POST /SaveForeignOrder
+            {
+            	"authkey": "HLtvDMmz3qZLlT4HboIPYx0S",  
+            	"order": {    
+            		"pharm_id": 395661,         
+            		"drugs": 
+            			[                
+            				{                       
+            					"id": "NKTWBFHcxsRO3SG0Xww7EA==",                       
+            					"packs": 1,                       
+            					"price": 75				
+            				}            
+            			],    
+            		"isActive": true,    
+            		"status": 0,    
+            		"delivery": false  
+            	}
+            }
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.SaveFakeOrder(SMReceipt.Global.Models.FakeOrder)">
+            <summary>
+            Сохранение Заказов ЖНВЛП
+            </summary>
+            <remarks>
+            Пример запроса:
+            
+            	POST /SaveFakeOrder
+            	{
+            		"authkey": "1h8Bvn87h3a8G26sGASe",
+            		"fakeOrders": [
+            			{
+            				"pharm_id": 1031,
+            				"user_id": "1488",
+            				"CreationDate": 1622637785,
+            				"IssueDate": 1622637785,
+            				"DeliveryAddress": "Москва",
+            				"Delivery": false,
+            				"drugs": [
+            					{
+            						
+            					}
+            				] 
+            			}
+            		]
+            	}
+            </remarks>
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.RecipesController.Recipes(PharmTaxiApp.Models.RecipeArgs)">
+             <summary>
+             Получение рецептов пациента
+             </summary>
+             <param name="args"></param>
+             <remarks>
+             Пример запроса:
+            
+            		POST /Recipes
+            		{
+            			"authkey": "fs43ASFDAfsdas34i",
+            			"email": "1st_man@mail.ru"
+            		}
+             </remarks> 
+        </member>
+        <member name="M:PharmTaxiAPI.Controllers.SearchController.Drugs(UMKBRequests.Models.API.Semantic.RequestSearch)">
+            <summary>
+            Поиск концепта по строке sfinx
+            </summary>
+            <param name="args">GetDosage.Models.Request</param>
+            <returns>GetDosage.Models.Answer</returns>
+        </member>
+        <member name="M:PharmTaxiAPI.Methods.Global.CheckAuth(System.String)">
+            <summary>
+            Простая проверка Ключа авторизации
+            </summary>
+            <param name="authkey"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.DrugStatus.key">
+            <summary>
+            ключ драга
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.DrugStatus.idStatus">
+            <summary>
+            статус драга в рецепте(0 - активный, 1 - частично обслужен, 2 - обслужен, 3 - просрочен без обслуживания, 4 - просрочен и частично обслужен, 5 - просрочен и обслужен)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.DrugStatus.medicaments">
+            <summary>
+            Список препоратов который был выдан
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelDrug.IdStatus">
+            <summary>
+            статус драга
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelDrug.DateСhange">
+            <summary>
+            дата изменения драга
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelPatientStats.id">
+            <summary>
+            ulongId пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelPatientStats.recipes">
+            <summary>
+            Список рецептов (ключ - код рецепта, тело - дата окончания действия рецепта)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeAndHistory.alert">
+            <summary>
+            Стандартный алерт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeAndHistory.recipe">
+            <summary>
+            Рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeAndHistory.history">
+            <summary>
+            История изменения рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeAndHistoryArgs.authkey">
+            <summary>
+            Сессионный ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeAndHistoryArgs.key">
+            <summary>
+            Лицензионный ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeAndHistoryArgs.recipeId">
+            <summary>
+            Номер рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeAndHistoryArgs.getHistory">
+            <summary>
+            Флаг получить историю рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.Id">
+            <summary>
+            ид записи из истории
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.RecipeId">
+            <summary>
+            Номер рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.Date">
+            <summary>
+            Дата изменения рецепта (UnixTime в мс)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.UserId">
+            <summary>
+            Id фармаколога (пользователя)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.IdStatus">
+            <summary>
+            Статус рецепта после изменения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.Drugs">
+            <summary>
+            Список препоратов у которых был изменен статус
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.Liquids">
+            <summary>
+            Список растворов у которых был изменен статус
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.IdClinic">
+            <summary>
+            Id клиники, где изменили рецепт или индивидульного предпринимателя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.CName">
+            <summary>
+            Имя клиники, где изменили рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.CCode">
+            <summary>
+            Код клиники, где изменили рецепт или индивидульного предпринимателя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.COkato">
+            <summary>
+            код субъекта РФ по ОКАТО или индивидульного предпринимателя+код района, который присваивает налоговая
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.IdDep">
+            <summary>
+            Id отделения, где изменили рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.CDName">
+            <summary>
+            Имя отделения, где изменили рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.CAdress">
+            <summary>
+            Адрес клиники или индивидульного предпринимателя, где изменили рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.CPhoneNumber">
+            <summary>
+            Телефон клиники, где изменили рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.COgrn">
+            <summary>
+            ОРГН клиники, где изменили рецепт или ОГРНИП индивидуального предпринимателя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.PHId">
+            <summary>
+            Id аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.PHName">
+            <summary>
+            Название аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.PHDispName">
+            <summary>
+            фамилия и инициалы провизора
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.PHDispFirstName">
+            <summary>
+            Имя провизора
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.PHDispLastName">
+            <summary>
+            Фамилия провизора
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLog.PHDispPatr">
+            <summary>
+            Отчество провизора
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.StatusLS.key">
+            <summary>
+            Id препората в рецепте
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.StatusLS.IdStatus">
+            <summary>
+            Статус рецепта после изменения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.StatusLS.medicaments">
+            <summary>
+            ФП которые выписали по этому ЛС
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLogFilter.RecipeId">
+            <summary>
+            Номер рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLogFilter.Date">
+            <summary>
+            Дата изменения рецепта (UnixTime в мс)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLogFilter.UserId">
+            <summary>
+            Id пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLogFilter.IdClinic">
+            <summary>
+            Id клиники, где изменили рецепт или индивидульного предпринимателя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLogFilter.IdDep">
+            <summary>
+            Id отделения, где изменили рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeLogFilter.PHId">
+            <summary>
+            Id фармаколога
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeReleaseArg.authkey">
+            <summary>
+            Сессионный ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeReleaseArg.key">
+            <summary>
+            Лицензионный ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeReleaseArg.pharmId">
+            <summary>
+            Ид аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeReleaseArg.pharmName">
+            <summary>
+            Название аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeReleaseArg.recipeId">
+            <summary>
+            Номер рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeReleaseArg.recipeFullRelease">
+            <summary>
+            Флаг статуса для всего рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeReleaseArg.fullReleaseStatus">
+            <summary>
+            Ид статуса для всего рецепта (0 - активный, 1 - частично обслужен, 2 - обслужен, 3 - просрочен без обслуживания, 4 - просрочен и частично обслужен, 5 - просрочен и обслужен)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeReleaseArg.releaseMedicaments">
+            <summary>
+            Флаг списать ли выданые препораты
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.RecipeReleaseArg.drugStatuses">
+            <summary>
+            Список драгов со статусом
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.SearchRecipesArgs.recipeId">
+            <summary>
+            Номер рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.SearchRecipesArgs.snils">
+            <summary>
+            Номер СНИЛСа для поиска
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.SearchRecipesArgs.email">
+            <summary>
+            Email пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.SearchRecipesResponse.Alert">
+            <summary>
+            стандартный алерт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.SearchRecipesResponse.Recipes">
+            <summary>
+            Список найденых рецептов
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.alert">
+            <summary>
+            Стандартный алерт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.recipe_code">
+            <summary>
+            Уникальный код рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.recipeNumber">
+            <summary>
+            Номер рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.recipeSeries">
+            <summary>
+            Серия рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.liquids">
+            <summary>
+            Список препаратов в рецепте
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.names">
+            <summary>
+            Имена к айдишникам (если их нет в кэше) в фармакотерапии в нужной локали
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.patient">
+            <summary>
+            Пациент
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.idDoc">
+            <summary>
+            Id врача выписавшего рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.idUser">
+            <summary>
+            Id юзера, выписавшего рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.idDep">
+            <summary>
+            Id отделения, где выписали рецепт
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.idClinic">
+            <summary>
+            Id клиники, где выписали рецепт
+            </summary>        
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.dateStart">
+            <summary>
+            Дата выписки рецепта (UnixTime мс.)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.dateEnd">
+            <summary>
+            Дата окончания действия рецепта (UnixTime мс.)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.dateEndItem">
+            <summary>
+            Табличное значение продолжительности действия рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.idForm">
+            <summary>
+            ID Рецептурной формы
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.NameForm">
+            <summary>
+            ID Рецептурной формы
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.IdStatus">
+            <summary>
+            ID статуса рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.dCode">
+            <summary>
+            Диагноз по МКБ10
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.pBirthday">
+            <summary>
+            Дата рождения пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.pSnils">
+            <summary>
+            СНИЛС пациента (на момент выписки)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.dTextComment">
+            <summary>
+            Коментарий врача
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Methods.Recipe.Model.ModelRecipeLS.IsAdult">
+            <summary>
+            Рецепт для взр
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.APIRequestAss.Lass">
+            <summary>
+            Лист объектов типа AssortimentItemData (объект типа ассортимента - с информацией о количестве и ФП нижнего уровня)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.APIRequestAss.authkey">
+            <summary>
+            ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.APIRequestAss.key">
+            <summary>
+            лицц ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.APIChangeAss.lass">
+            <summary>
+            Лист объектов типа AssortimentItemData (объект типа ассортимента - с информацией о количестве и ФП нижнего уровня)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.APIChangeAss.authkey">
+            <summary>
+            ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.APIChangeAss.key">
+            <summary>
+            лицц ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.APIRequestPrice.Pass">
+            <summary>
+            Лист объектов типа PriceItemData (объект типа цен - с информацией о цене и ФП нижнего уровня)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.APIRequestPrice.authkey">
+            <summary>
+            ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.APIRequestPrice.key">
+            <summary>
+            лицц ключ
+            </summary>
+        </member>
+        <member name="T:PharmTaxiAPI.Models.InviteViaEmail">
+            <summary>
+            Параметры для создания приглашения и отправки на почту
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.InviteViaEmail.lic_key">
+            <summary>
+            Лицензионный ключ клиента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.InviteViaEmail.authkey">
+            <summary>
+            Authkey пользователя, который создает приглашение
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.InviteViaEmail.key">
+            <summary>
+            Authkey пользователя, который создает приглашение
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.InviteViaEmail.invitedEmail">
+            <summary>
+            Электронная почта пользователя, которого нужно пригласить
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.InviteViaEmail.invitedRoleCodes">
+            <summary>
+            Коды добавляемых ролей (используется код белона)
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.InviteViaEmail.application">
+            <summary>
+            Индекс сервиса/приложения
+            </summary>
+        </member>
+        <member name="T:PharmTaxiAPI.Models.ConfirmInvite">
+            <summary>
+            Параметры для подтверждения приглашения
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.ConfirmInvite.key">
+            <summary>
+            Лицензионный ключ клиента*
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.ConfirmInvite.authkey">
+            <summary>
+            Аuthkey пользователя, который принимает приглашение*
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.ConfirmInvite.code">
+            <summary>
+            Код подтверждения приглашения*
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.ConfirmInvite.application">
+            <summary>
+            Индекс сервиса/приложения под которым создается аккаунт*
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.ChangeAss.fp_id">
+            <summary>
+            Уникальный номер упаковки медикамента в системе UMKB
+            </summary>
+            
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetBy.key">
+            <summary>
+            лиц ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetBy.authkey">
+            <summary>
+            ключ авторизации
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetBy.userid">
+            <summary>
+            id пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetByPharmId.key">
+            <summary>
+            лиц ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetByPharmId.authkey">
+            <summary>
+            ключ авторизации
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetByPharmId.pharmid">
+            <summary>
+            id пользователя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetRecipeJSON.PharmId">
+            <summary>
+            id Аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetRecipeJSON.ReceiptCode">
+            <summary>
+            Код рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetRecipeJSON.FIO">
+            <summary>
+            ФИО пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetRecipeJSON.birthdate">
+            <summary>
+            Дата рождения пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetRecipeJSON.SNILS">
+            <summary>
+            СНИЛС пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetRecipeJSON.Region">
+            <summary>
+            Регион работы аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetRecipeJSON.DateOfReceipt">
+            <summary>
+            Дата рецепта
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetRecipeJSON.PatientId">
+            <summary>
+            Id пациента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.GetRecipeJSON.ReceiptsCodes">
+            <summary>
+            Массив кодов рецептов
+            </summary>
+        </member>
+        <member name="T:PharmTaxiAPI.Models.GuestUser">
+            <summary>
+            Параметры гостевого пользователя
+            </summary>
+        </member>
+        <member name="T:PharmTaxiAPI.Models.CreateGuestResponse">
+            <summary>
+            Ответ по созданию гостя
+            </summary>
+        </member>
+        <member name="F:PharmTaxiAPI.Models.CreateGuestResponse.authkey">
+            <summary>
+            Выданный гостю ауткей
+            </summary>
+        </member>
+        <member name="F:PharmTaxiAPI.Models.CreateGuestResponse.alert">
+            <summary>
+            Коллекция параметров оповещения
+            </summary>
+        </member>
+        <member name="T:PharmTaxiAPI.Models.UserFromGuest">
+            <summary>
+            Параметры для пользователя, который создается из гостя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.UserFromGuest.key">
+            <summary>
+            Лицензионный ключ клиента
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.UserFromGuest.authkey">
+            <summary>
+            Аутки гостя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.UserFromGuest.email">
+            <summary>
+            Email гостя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.UserFromGuest.password">
+            <summary>
+            Пароль
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.UserFromGuest.firstName">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.UserFromGuest.lastName">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.UserFromGuest.middleName">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.UserFromGuest.application">
+            <summary>
+            Индекс сервиса/приложения
+            </summary>
+        </member>
+        <member name="T:PharmTaxiAPI.Models.CreateUserFromGuestResponse">
+            <summary>
+            Ответ по созданию пользователя из гостя
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.RecipeReleaseReq.authkey">
+            <summary>
+            Сессионный ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.RecipeReleaseReq.key">
+            <summary>
+            Лицензионный ключ
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.OrderToSaveL.status">
+            <summary>
+            status заказа:
+            -1 - отменён
+            0 - в обработке
+            1 - готов к выдаче
+            2 - выдан
+            </summary>
+            
+        </member>
+        <member name="P:PharmTaxiAPI.Models.OrderToSaveD.status">
+            <summary>
+            status заказа:
+            -1 - отменён
+            0 - в обработке
+            1 - готов к выдаче
+            2 - выдан
+            </summary>
+            
+        </member>
+        <member name="P:PharmTaxiAPI.Models.MedsL.id">
+            <summary>
+            ID ФП
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.MedsL.name">
+            <summary>
+            Имя ФП
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.MedsL.packs">
+            <summary>
+            количество упаковое
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.MedsL.tn">
+            <summary>
+            ID ТН
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.MedsL.drugstore_drug_id">
+            <summary>
+            ID из аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.MedsD.id">
+            <summary>
+            ID ФП
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.MedsD.name">
+            <summary>
+            Имя ФП
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.MedsD.packs">
+            <summary>
+            количество упаковое
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.MedsD.tn">
+            <summary>
+            ID ТН
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.MedsD.drugstore_drug_id">
+            <summary>
+            ID из аптеки
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.AnswerUnits.alert">
+            <summary>
+            Стандартный класс алерта - информация о состоянии обработки запроса.
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Models.AnswerUnits.units">
+            <summary>
+            Ответ. Ключ - BigId из запроса, значание - Список [математическая операция, BigId]
+            </summary>
+        </member>
+        <member name="P:PharmTaxiAPI.Startup.Message_StatusInit">
+            <summary>
+            Набор сообщений об успехе или неудаче процессов при старте сервера
+            </summary>
+        </member>
+        <member name="T:Core.Pharm.Response">
+            <summary>
+            Ответ сервиса
+            </summary>
+        </member>
+        <member name="P:Core.Pharm.Response.Successed">
+            <summary>
+            Результат выполнения операции (выполнено - не выполнено)
+            </summary>
+        </member>
+        <member name="P:Core.Pharm.Response.Message">
+            <summary>
+            Текстовое сообщение ("Операция выполнена" либо текст сообщения об ошибке)
+            </summary>
+        </member>
+        <member name="P:Core.Pharm.Response.RowWarnings">
+            <summary>
+            Предупреждалки и ошибки по номеру строки (если со строкой что-то прошло не так)
+            </summary>
+        </member>
+        <member name="M:Core.Pharm.Response.#ctor(System.Boolean,System.String)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="successed">Результат выполнения операции (выполнено - не выполнено)</param>
+            <param name="message">Текстовое сообщение ("Операция выполнена либо текст сообщения об ошибке")</param>
+        </member>
+        <member name="M:Core.Pharm.Response.#ctor(System.Boolean,System.String,Core.Pharm.RowWarning[])">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="successed">Результат выполнения операции (выполнено - не выполнено)</param>
+            <param name="message">Текстовое сообщение ("Операция выполнена либо текст сообщения об ошибке")</param>
+        </member>
+        <member name="P:Core.Data.AssItemData.PackID">
+            <summary>
+            ФП ID
+            </summary>
+        </member>
+        <member name="P:Core.Data.GetAss.SetSkip">
+            <summary>
+            Это для паджинации - сколько пропустить
+            </summary>
+        </member>
+        <member name="P:Core.Data.GetAss.SetLimit">
+             <summary>
+            тоже для паджинации - сколько за раз вывести 
+             </summary>
+        </member>
+        <member name="T:Core.Data.AssortmentItemData">
+            <summary>
+            Позиция ассоритмента
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.RegistrationCertificate">
+            <summary>
+            Номер регистрационного удостоверения
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.RegistrationDate">
+            <summary>
+            Дата регистрации препарата
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.RegistrationEndDate">
+            <summary>
+            Дата окончания действия регистрационного удостоверения
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.RegistrationCancellationDate">
+            <summary>
+            Дата аннулирования регистрационного удостоверения
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.RegistrationOwner">
+            <summary>
+            Юридическое лицо, на имя которого выдано регистрационное удостоверение
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.ActiveSubstance">
+            <summary>
+            Действующее вещество. Международное непатентованное или химическое наименование
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.ProductionStages">
+            <summary>
+            Сведения о стадиях производства
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.PharmacoTherapeuticGroup">
+            <summary>
+            Фармако-терапевтическая группа
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.ConsignmentNumber">
+            <summary>
+            Номер партии упаковки медикамента
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.BestBefore">
+            <summary>
+            Срок годности медикамента
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.DeliveryDate">
+            <summary>
+            Дата поставки медикамента
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.Quantity">
+            <summary>
+            Количество упаковок медикамента в наличии
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.PurchasePrice">
+            <summary>
+            Цена оптовая закупочная
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.SellingPrice">
+            <summary>
+            Цена продажи
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.Discount">
+            <summary>
+            Скидка
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.SellingPriceType">
+            <summary>
+            Тип цены (по умолчанию = 1)
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.Comment">
+            <summary>
+            Комментарии к позиции ассортимента
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.Location">
+            <summary>
+            Локайшн - это местоположение в рамках складов СКОЛа
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.LocationHistory">
+            <summary>
+            История перемещений
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.Type">
+            <summary>
+            Тип
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.Serial">
+            <summary>
+            Серийный номер
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.GTIN">
+            <summary>
+            ГТИН
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.Validated">
+            <summary>
+            Проверенность
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.Authinticity">
+            <summary>
+            Подлинность
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.Probability_seller">
+            <summary>
+            С какой вероятностью товар у продавца
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.Probability_aquire">
+            <summary>
+            Товар у покупателя
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.ScansCount">
+            <summary>
+            Количество сканирований
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.IdBuyer">
+            <summary>
+            IDшник покупателя
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.FullQuantity">
+            <summary>
+            Полное количество - количество в упаковке на дозу
+            </summary>
+        </member>
+        <member name="P:Core.Data.AssortmentItemData.RelocationStatus">
+            <summary>
+            Статус перемещения - для СКОЛа
+            </summary>
+        </member>
+        <member name="T:Core.Data.ConnectionMode">
+            <summary>
+            Режим подключения
+            </summary>
+        </member>
+        <member name="F:Core.Data.ConnectionMode.Work">
+            <summary>
+            Рабочая база
+            </summary>
+        </member>
+        <member name="F:Core.Data.ConnectionMode.Test">
+            <summary>
+            Тестовая база
+            </summary>
+        </member>
+        <member name="T:Core.Data.ItemData">
+            <summary>
+            Позиция
+            </summary>
+        </member>
+        <member name="P:Core.Data.ItemData.PharmId">
+            <summary>
+            Персональный код aптеки
+            </summary>
+        </member>
+        <member name="P:Core.Data.ItemData.PharmLogin">
+            <summary>
+            Логин aптеки
+            </summary>
+        </member>
+        <member name="P:Core.Data.ItemData.PackId">
+            <summary>
+            Уникальный номер упаковки медикамента в системе UMKB
+            </summary>
+        </member>
+        <member name="P:Core.Data.ItemData.PharmPackId">
+            <summary>
+            Внутриаптечный ID упаковки медикамента или артикул
+            </summary>
+        </member>
+        <member name="T:Core.Data.PharmPositionData">
+            <summary>
+            Упаковка медикамента
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.Barcode">
+            <summary>
+            Штрихкод упаковки медикамента
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.Name">
+            <summary>
+            Полное название препарата или внутриаптечное наименование упаковки медикамента
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.TradeName">
+            <summary>
+            Торговое наименование
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.MNN">
+            <summary>
+            Международное непатентованное наименование (не для сервиса!!!)
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.Composition">
+            <summary>
+            Форма выпуска (ЛФ+Дозировк+УП+Numero)
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.FormDosage">
+            <summary>
+            Лекарственная форма и дозировка
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.Form">
+            <summary>
+            Лекарственная форма
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.Dosage">
+            <summary>
+            Дозировка с единицей измерения
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.Pack">
+            <summary>
+            Упаковка (УП) или фасовка (первичная и вторичная)
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.ManufacturerCountry">
+            <summary>
+            Производитель + страна
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.Manufacturer">
+            <summary>
+            Производитель медикамента
+            </summary>
+        </member>
+        <member name="P:Core.Data.PharmPositionData.Country">
+            <summary>
+            Страна производителя
+            </summary>
+        </member>
+        <member name="T:Core.Data.PriceItemData">
+            <summary>
+            Позиция прайс-листа
+            </summary>
+        </member>
+        <member name="P:Core.Data.PriceItemData.SellingPrice">
+            <summary>
+            Цена розничная отпускная
+            </summary>
+        </member>
+        <member name="P:Core.Data.PriceItemData.SellingPriceType">
+            <summary>
+            Тип цены розничной
+            </summary>
+        </member>
+        <member name="P:Core.Data.PriceItemData.Discount">
+            <summary>
+            Размер скидки позиции прайс-листа в процентах
+            </summary>
+        </member>
+        <member name="P:Core.Data.PriceItemData.Comment">
+            <summary>
+            Комментарии к позиции прайс-листа
+            </summary>
+        </member>
+        <member name="M:Core.Data.SqlCommands.CreateLibSelectByLevel">
+            <summary>
+            Команда выборки данных по lib и level
+            </summary>
+            <returns>Команда</returns>
+        </member>
+        <member name="M:Core.Data.SqlCommands.CreateLibSelectAsLinks">
+            <summary>
+            Команда выборки данных по lib и id
+            </summary>
+            <returns>Команда</returns>
+        </member>
+        <member name="M:Core.Data.SqlCommands.CreateLibNamesSelect">
+            <summary>
+            Команда выборки всего содержимого таблицы наименований
+            </summary>
+            <returns>Команда</returns>
+        </member>
+        <member name="M:Core.Data.SqlCommands.CreateLibNamesSelectByMasterId">
+            <summary>
+            Команда выборки содержимого таблицы наименований по id
+            </summary>
+            <returns>Команда</returns>
+        </member>
+        <member name="M:Core.Data.SqlCommands.CreateServiceSimilarityInsert">
+            <summary>
+            Команда вставки в таблицу similarity (база Service)
+            </summary>
+            <returns>Команда (с параметрами @group_md5, @main, @similarity_lib, @similarity_id, @weight, @status)</returns>
+        </member>
+        <member name="T:Core.StaticObjects.ExternalServices">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Core.StaticObjects.ExternalServices.GetSemantic">
+            <summary>
+            Получение смысловых графов
+            GetSemantic: http://wiki.socmedica.me/doku.php?id=umkb:api:get:semantic
+            </summary>
+        </member>
+        <member name="P:Core.StaticObjects.ExternalServices.DB">
+            <summary>
+            База данных СКОЛ (MongoDb)
+            </summary>
+        </member>
+    </members>
+</doc>

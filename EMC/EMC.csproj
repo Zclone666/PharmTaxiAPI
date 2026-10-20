@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ECPLib" Version="1.0.9.3" />
+    <PackageReference Include="EMC.ECPIntegration" Version="1.9.46.20" />
+    <PackageReference Include="UMKBCoreAPI" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CacheTextMessage\CacheTextMessage.csproj" />
+    <ProjectReference Include="..\PTConstants\PTConstants.csproj" />
+    <ProjectReference Include="..\SMMeasurer\SMMeasurer.csproj" />
+    <ProjectReference Include="..\TelegramNotification\Telegram.csproj" />
+  </ItemGroup>
+
+</Project>

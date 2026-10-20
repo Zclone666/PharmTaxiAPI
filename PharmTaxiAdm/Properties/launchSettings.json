@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PharmTaxiAdm": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

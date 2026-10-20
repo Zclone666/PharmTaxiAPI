@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <UserSecretsId>b1f93db1-7ddb-4c0c-8bf9-ce5866e5303e</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <OutputType>Exe</OutputType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <Platforms>AnyCPU;x64</Platforms>
+    <Version>1.0.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>PharmTaxiAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DocumentationFile>PharmTaxiAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Barcodes\**" />
+    <Compile Remove="Models\Models\**" />
+    <Compile Remove="PharmService\**" />
+    <Content Remove="Barcodes\**" />
+    <Content Remove="Models\Models\**" />
+    <Content Remove="PharmService\**" />
+    <EmbeddedResource Remove="Barcodes\**" />
+    <EmbeddedResource Remove="Models\Models\**" />
+    <EmbeddedResource Remove="PharmService\**" />
+    <None Remove="Barcodes\**" />
+    <None Remove="Models\Models\**" />
+    <None Remove="PharmService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Methods\Auth.cs" />
+    <Compile Remove="Methods\UPCGo.cs" />
+    <Compile Remove="Methods\Utils.cs" />
+    <Compile Remove="Models\Answer.cs" />
+    <Compile Remove="Models\BarcodeCheckResponse.cs" />
+    <Compile Remove="Models\BarcodeDetectResponse.cs" />
+    <Compile Remove="Models\BarcodeRequestData.cs" />
+    <Compile Remove="Models\CheckReq.cs" />
+    <Compile Remove="Models\IdNamePair.cs" />
+    <Compile Remove="Models\ProcessBarcodeResponse.cs" />
+    <Compile Remove="Models\UmkbDataSource.cs" />
+    <Compile Remove="Models\UPCReq.cs" />
+    <Compile Remove="Models\UPCRes.cs" />
+    <Compile Remove="Models\WebServer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AUpload" Version="0.9.10" />
+    <PackageReference Include="ECPLib" Version="1.0.9.3" />
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="FastExcel" Version="3.0.13" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="SMBarcode" Version="1.5.3" />
+    <PackageReference Include="SMCommonUtils" Version="1.2.14.1" />
+    <PackageReference Include="SMReceipt" Version="2.0.1.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.4.0" />
+    <PackageReference Include="System.Data.OleDb" Version="5.0.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
+    <PackageReference Include="UMAScriptParse" Version="0.0.74.1" />
+    <PackageReference Include="UsefullStuff" Version="1.3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="StaticObjects\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EMC\EMC.csproj" />
+    <ProjectReference Include="..\PharmTaxiAdm\PharmTaxiAdm.csproj" />
+    <ProjectReference Include="..\PharmTaxiApp\PharmTaxiApp.csproj" />
+    <ProjectReference Include="..\PTConstants\PTConstants.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Copy SourceFiles="$(ProjectDir)XMLs/SMBarcode.xml" DestinationFolder="$(OutDir)" />
+  </Target>
+
+</Project>
